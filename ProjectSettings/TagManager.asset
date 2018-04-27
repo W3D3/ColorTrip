@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Solid
+  - Color1
+  - Color2
+  - ColorMixed
   layers:
   - Default
   - TransparentFX
