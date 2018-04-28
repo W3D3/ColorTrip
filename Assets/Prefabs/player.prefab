@@ -85,10 +85,8 @@ MonoBehaviour:
   moveSpeed: 10
   timeToJumpApex: 0.4
   dash: 30
-  wallJumpClimb: {x: 7.5, y: 16}
-  wallJumpOff: {x: 8.5, y: 7}
-  wallLeap: {x: 18, y: 17}
-  checkPoint: {x: 0, y: 0}
+  wallLeap: {x: 15, y: 20}
+  checkPoint: {x: 0, y: 0, z: 0}
   wallSlideSpeedMax: 3
   wallStickTime: 0.25
 --- !u!114 &114210287540769688
@@ -132,6 +130,7 @@ MonoBehaviour:
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   collider: {fileID: 0}
+  playerInput: {x: 0, y: 0}
 --- !u!212 &212398124112815168
 SpriteRenderer:
   m_ObjectHideFlags: 1
