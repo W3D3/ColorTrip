@@ -37,6 +37,7 @@ public class PlatformController : RaycastController {
 
 		Vector3 velocity = CalculatePlatformMovement();
 
+
 		CalculatePassengerMovement(velocity);
 
 		MovePassengers (true);
@@ -81,6 +82,7 @@ public class PlatformController : RaycastController {
 	}
 
 	void MovePassengers(bool beforeMovePlatform) {
+		if(this.gameObject.layer != 8) return;
 		foreach (PassengerMovement passenger in passengerMovement) {
 			if (!passengerDictionary.ContainsKey(passenger.transform)) {
 				passengerDictionary.Add(passenger.transform,passenger.transform.GetComponent<Controller2D>());

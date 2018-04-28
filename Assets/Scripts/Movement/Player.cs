@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
 
+	public Vector2 checkPoint;
+
 	public float wallSlideSpeedMax = 3;
 	public float wallStickTime = .25f;
 	float timeToWallUnstick;
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour {
 		controller = GetComponent<Controller2D> ();
 		level = GetComponent<LevelInit>();
 		input = GetComponent<GamepadInput>();
+		checkPoint = this.transform.position;
 
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -49,6 +52,16 @@ public class Player : MonoBehaviour {
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 
 		bool wallSliding = false;
+
+		if (controller.collisions.death)
+		{
+			this.transform.position = checkPoint;
+			this.velocity = Vector3.zero;
+			controller.collisions.death = false;
+			return;
+			
+		}
+		
 		if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below) {
 			wallSliding = true;
 
@@ -142,5 +155,14 @@ public class Player : MonoBehaviour {
 	
 		velocity.y += gravity * Time.deltaTime;
 		controller.Move (velocity * Time.deltaTime);
+	}
+	
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		Debug.Log("Collided");
+		if(collider.gameObject.tag == "Death") // this string is your newly created tag
+		{
+			Destroy(this.gameObject);
+		}
 	}
 }

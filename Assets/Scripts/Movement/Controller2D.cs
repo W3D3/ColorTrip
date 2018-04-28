@@ -6,6 +6,8 @@ public class Controller2D : RaycastController {
 	float maxClimbAngle = 80;
 	float maxDescendAngle = 80;
 	
+	
+	
 	public CollisionInfo collisions;
 
 
@@ -55,6 +57,7 @@ public class Controller2D : RaycastController {
 			Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength,Color.red);
 
 			if (hit) {
+				checkForDeath(hit);
 
 				if (hit.distance == 0) {
 					continue;
@@ -104,6 +107,7 @@ public class Controller2D : RaycastController {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength,Color.red);
 
 			if (hit) {
+				checkForDeath(hit);
 			 
 				velocity.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
@@ -175,6 +179,12 @@ public class Controller2D : RaycastController {
 		return !collisions.above && !collisions.below && !collisions.left && !collisions.right;
 	}
 
+	private void checkForDeath(RaycastHit2D hit)
+	{
+		this.collisions.death = hit.collider.tag == "Death";
+		//TODO spawn BLOOOD
+	}
+
 	public struct CollisionInfo {
 		public bool above, below;
 		public bool left, right;
@@ -184,6 +194,7 @@ public class Controller2D : RaycastController {
 		public float slopeAngle, slopeAngleOld;
 		public Vector3 velocityOld;
 		public int faceDir;
+		public bool death;
 
 		public void Reset() {
 			above = below = false;
