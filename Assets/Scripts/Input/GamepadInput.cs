@@ -14,11 +14,17 @@ public class GamepadInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-/*
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0, 0));
+        //foreach (string s in Input.GetJoystickNames())
+        //    Debug.Log(s);
 
-        transform.Translate(new Vector3(0, Input.GetAxis("Vertical"), 0));
-*/
+        //int i = 0;
+        //while (i < 4)
+        //{
+        //    if (Mathf.Abs(Input.GetAxis("Joy" + (i+1) + "X")) > 0.2F || Mathf.Abs(Input.GetAxis("Joy" + (i + 1) + "Y")) > 0.2F)
+        //        Debug.Log(Input.GetJoystickNames()[i] + " is moved");
+
+        //    i++;
+        //}
 
         if (Jump())
             Debug.Log("jump pressed");
@@ -37,58 +43,83 @@ public class GamepadInput : MonoBehaviour
 
     }
 
-    private readonly string _jump_button_name = "JumpButton";
-    private readonly string _dash_button_name = "DashButton";
     private readonly string _color1_button = "Color1";
     private readonly string _color2_button = "Color2";
+    private readonly string _horizontal = "Horizontal";
+    private readonly string _vertical = "Vertical";
+    private readonly string _horizontal_switch = "HorizontalSwitch";
+    private readonly string _vertical_switch = "VerticalSwitch";
+    private readonly double _treshold = .1;
+
+    private readonly string _switch_gamepad_name = "Wireless Gamepad";
+
+    public float HorizontalVal()
+    {
+        float horVal = Input.GetAxis(_horizontal);
+
+        foreach (string controller_name in Input.GetJoystickNames())
+        {
+            if (_switch_gamepad_name.Equals(controller_name) && Input.GetAxis(_horizontal_switch) != 0)
+                horVal = Input.GetAxis(_horizontal_switch);
+        }
+
+        return horVal;
+    }
+
+    public float VerticalVal()
+    {
+        float vertVal = Input.GetAxis(_vertical);
+
+        foreach (string controller_name in Input.GetJoystickNames())
+        {
+            if (_switch_gamepad_name.Equals(controller_name) && Input.GetAxis(_vertical_switch) != 0)
+            {
+                Debug.Log("switch found");
+                vertVal = Input.GetAxis(_vertical_switch);
+            }
+        }
+
+        return vertVal;
+    }
 
     public bool Jump()
     {
-        // switch and xbox controller
-        return Input.GetKeyDown(KeyCode.Space);
-        return Input.GetAxis(_jump_button_name) == 1;
+        return
+            // keyboard 
+            Input.GetKeyDown(KeyCode.Space)
+            ||
+            // switch and xbox controller
+            Input.GetKeyDown(KeyCode.JoystickButton0);
     }
 
     public bool Dash()
     {
-        // switch and xbox controller
-        return Input.GetAxis(_dash_button_name) == 1;
+        return
+            // keyboard
+            Input.GetKeyDown(KeyCode.LeftShift)
+            ||
+            // switch and xbox controller
+            Input.GetKeyDown(KeyCode.JoystickButton2);
     }
 
     public bool Color1()
     {
         return
-            // switch controller
-            Input.GetKey(KeyCode.Joystick1Button6)
-                && !Input.GetKey(KeyCode.Joystick1Button7)
-            ||
-            // xbox controller
-            Input.GetAxis(_color1_button) > .5
-                && Input.GetAxis(_color2_button) < .5;
+            Input.GetAxis(_color1_button) > _treshold
+                && Input.GetAxis(_color2_button) < _treshold;
     }
 
     public bool Color2()
     {
         return
-            // switch controller
-            !Input.GetKey(KeyCode.Joystick1Button6)
-                && Input.GetKey(KeyCode.Joystick1Button7)
-            ||
-            // xbox controller
-            Input.GetAxis(_color1_button) < .5
-                && Input.GetAxis(_color2_button) > .5;
+            Input.GetAxis(_color1_button) < _treshold
+                && Input.GetAxis(_color2_button) > _treshold;
     }
 
     public bool ColorMixed()
     {
         return
-            // switch controller
-            Input.GetKey(KeyCode.Joystick1Button6)
-                && Input.GetKey(KeyCode.Joystick1Button7)
-            ||
-            // xbox controller
-            Input.GetAxis(_color1_button) > .5
-                && Input.GetAxis(_color2_button) > .5;
-        ;
+            Input.GetAxis(_color1_button) > _treshold
+                && Input.GetAxis(_color2_button) > _treshold;
     }
 }

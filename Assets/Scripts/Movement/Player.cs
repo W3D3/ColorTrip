@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update() {
-		Vector2 input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
+		Vector2 input = new Vector2 (this.input.HorizontalVal(), this.input.VerticalVal());
 		int wallDirX = (controller.collisions.left) ? -1 : 1;
 
 		float targetVelocityX = input.x * moveSpeed;
@@ -175,13 +175,13 @@ public class Player : MonoBehaviour {
 	        velocity.x = input.normalized.x * dash;
 	        canDash = false;
         }
-
+        
 	    if (!controller.collisions.zeroGravity)
 	    {
 	        velocity.y += gravity * Time.deltaTime;
 	    }
 
-		controller.Move (velocity * Time.deltaTime);
+		controller.Move (velocity * Time.deltaTime, input);
 	}
 	
 }
