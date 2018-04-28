@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class DeathCounterHandler : MonoBehaviour
 {
-	private Text deathCounter;
+	private Text _deathCounter;
 	// Use this for initialization
 	void Start ()
 	{
-		deathCounter = GetComponent<Text>();
+		_deathCounter = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		UpdateText();
-		
-		Debug.Log("Test");
 
 	}
 
@@ -26,8 +24,6 @@ public class DeathCounterHandler : MonoBehaviour
 		var deaths = GameManager.instance.DeathCounter;
 		var newText = deaths + (deaths == 1 ? " Death" : " Deaths");
 
-		
-		
-		deathCounter.text = newText;
+		_deathCounter.text = newText;
 	}
 }
