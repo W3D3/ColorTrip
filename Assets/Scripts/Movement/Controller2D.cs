@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Controller2D : RaycastController {
 	
@@ -230,6 +231,7 @@ public class Controller2D : RaycastController {
 		if (hit.collider.tag == "Goal")
 		{
 			GameManager.instance.advanceLevel();
+			Destroy(this.gameObject);
 		}
 
 		return hit.collider.tag == "Goal";
