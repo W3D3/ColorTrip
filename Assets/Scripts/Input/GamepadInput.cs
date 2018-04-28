@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class GamepadInput : MonoBehaviour
 {
+    public static GamepadInput instance = null;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -51,7 +59,7 @@ public class GamepadInput : MonoBehaviour
     private readonly string _vertical_switch = "VerticalSwitch";
     private readonly double _treshold = .1;
 
-    private readonly string _switch_gamepad_name = "Wireless Gamepad";
+    private readonly List<String> _switch_gamepad_names = new List<String>() { "Wireless Gamepad", "Unknown Pro Controller" };
 
     public float HorizontalVal()
     {
@@ -59,8 +67,11 @@ public class GamepadInput : MonoBehaviour
 
         foreach (string controller_name in Input.GetJoystickNames())
         {
-            if (_switch_gamepad_name.Equals(controller_name) && Input.GetAxis(_horizontal_switch) != 0)
+            if (_switch_gamepad_names.Contains(controller_name) && Input.GetAxis(_horizontal_switch) != 0)
+            {
                 horVal = Input.GetAxis(_horizontal_switch);
+                break;
+            }
         }
 
         return horVal;
@@ -72,10 +83,11 @@ public class GamepadInput : MonoBehaviour
 
         foreach (string controller_name in Input.GetJoystickNames())
         {
-            if (_switch_gamepad_name.Equals(controller_name) && Input.GetAxis(_vertical_switch) != 0)
+            if (_switch_gamepad_names.Contains(controller_name) && Input.GetAxis(_vertical_switch) != 0)
             {
                 Debug.Log("switch found");
                 vertVal = Input.GetAxis(_vertical_switch);
+                break;
             }
         }
 
