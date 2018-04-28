@@ -8,6 +8,7 @@ TagManager:
   - Color1
   - Color2
   - ColorMixed
+  - Death
   layers:
   - Default
   - TransparentFX

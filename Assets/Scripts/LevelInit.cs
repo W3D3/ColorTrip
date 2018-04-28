@@ -41,6 +41,7 @@ public class LevelInit : MonoBehaviour
 			color3.GetComponent<SpriteRenderer>().color = colorSet.MixedColor;
 		}
 		
+		SetColorOfBlocks(0);
 		
 	}
 	
