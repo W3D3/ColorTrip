@@ -261,9 +261,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Herrrry\nLaubreiter David\nLercher Alexander\nTscheinig Andreas\nWaysocher
-    Peter\nWedenig Christoph\n\nOzzed - The Day Time Ran Away\n\nFlipps\nGracial Indifference\n\nSatan\nperformance
-    enhancing drugs\nAnexia / GameJam \n\n\"fabolous\" Unity controller support\n\n\n\n"
+  m_Text: "Herold \"Herry\" Manuel\nLaubreiter \"Laubi \"David\nLercher \"Alex\" Alexander\nTscheinig
+    \"Trigger\" Andreas\nWaysocher \"Merge Conflict\" Peter\nWedenig \"Wede\" Christoph\n\nOzzed
+    - The Day Time Ran Away\nEffects by freesound.org\n\nFlipps\nGracial Indifference\nJust
+    Alice\n\nSatan\nperformance enhancing drugs\nAnexia / GameJam \n\n\"fabulous\"
+    Unity controller support\n\n\n\n"
 --- !u!222 &417139928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -733,8 +735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -106.5, y: -115.1}
-  m_SizeDelta: {x: 160, y: 318.9}
+  m_AnchoredPosition: {x: -106.5, y: -121.41}
+  m_SizeDelta: {x: 160, y: 331.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2002150079
 MonoBehaviour:
@@ -768,7 +770,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Developers\n\n\n\n\n\n\nMusic\n\nFont\n\nSpecial Thanks \n\n\n\n\n\"Special
+  m_Text: "Developers\n\n\n\n\n\n\nMusic\n\n\nFonts\n\n\n\nSpecial Thanks \n\n\n\n\"Special
     Thanks\"\n\n\n\n\n\n"
 --- !u!222 &2002150080
 CanvasRenderer:
