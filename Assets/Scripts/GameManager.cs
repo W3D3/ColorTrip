@@ -5,8 +5,10 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;
 	
 	private LevelManager levelManager; //Store a reference to our BoardManager which will set up the level.
-	private int level = -1;
-	public ColorSet currentColorSet;
+
+	public int level = -1; //set negative in order to just load no level :O (Herry)
+
+    public ColorSet currentColorSet;
 	
 	//Awake is always called before any Start functions
 	void Awake()
