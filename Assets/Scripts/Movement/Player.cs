@@ -65,6 +65,7 @@ public class Player : MonoBehaviour {
 
 		if (controller.collisions.death)
 		{
+			GameManager.instance.deathIsEternal();
 			this.transform.position = checkPoint;
 			this.velocity = Vector3.zero;
 			controller.collisions.death = false;
@@ -149,6 +150,7 @@ public class Player : MonoBehaviour {
 
 		if (GamepadInput.Jump()) {
 			if (wallSliding) {
+				GameManager.instance.playJumpSound();
 				/*if (wallDirX == input.x || input.x == 0) {
 					velocity.x = -wallDirX * wallJumpOff.x;
 					velocity.y = wallJumpOff.y;
@@ -159,6 +161,7 @@ public class Player : MonoBehaviour {
 				//}
 			}
 			if (controller.collisions.below) {
+				GameManager.instance.playJumpSound();
 				velocity.y = jumpVelocity;
 			    Debug.Log("jump");
             }
@@ -166,8 +169,9 @@ public class Player : MonoBehaviour {
 			
 		}
 
-	    if (GamepadInput.Dash() && controller.isAirborne() && canDash)
+	    if (GamepadInput.Dash() && canDash)
 	    {
+		    GameManager.instance.playDashSound();
 	        velocity.x = input.normalized.x * dash;
 	        canDash = false;
         }
