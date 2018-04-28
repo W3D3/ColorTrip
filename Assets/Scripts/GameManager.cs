@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
 	public void advanceLevel()
 	{
-		levelManager.SetupScene(++level);
+		Debug.Log(level);
+		levelManager.SetupScene(level++);
 	}
 }
