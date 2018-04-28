@@ -12,6 +12,9 @@ TagManager:
   - Checkpoint
   - Goal
   - ZeroGravity
+  - AntiColor1
+  - AntiColor2
+  - AntiColorMixed
   layers:
   - Default
   - TransparentFX
