@@ -49,7 +49,7 @@ public class GamepadInput : MonoBehaviour
     private readonly string _vertical = "Vertical";
     private readonly string _horizontal_switch = "HorizontalSwitch";
     private readonly string _vertical_switch = "VerticalSwitch";
-    private readonly double _treshold = .8;
+    private readonly double _treshold = .1;
 
     private readonly string _switch_gamepad_name = "Wireless Gamepad";
 
