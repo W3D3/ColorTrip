@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;
 	
 	private LevelManager levelManager; //Store a reference to our BoardManager which will set up the level.
-	private int level = 2;
+	public int level = 2;
 	public ColorSet currentColorSet;
 	
 	//Awake is always called before any Start functions
