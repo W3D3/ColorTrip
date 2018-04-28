@@ -23,6 +23,11 @@ public class DeathCounterHandler : MonoBehaviour
 
 	void UpdateText()
 	{
-		deathCounter.text = GameManager.instance.DeathCounter + " Deaths";
+		var deaths = GameManager.instance.DeathCounter;
+		var newText = deaths + (deaths == 1 ? " Death" : " Deaths");
+
+		
+		
+		deathCounter.text = newText;
 	}
 }
