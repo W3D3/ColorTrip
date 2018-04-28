@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class LevelInit : MonoBehaviour
 {
-	public ColorSet colorSet;
+	public ColorSet colorSet = Colors.COLORSET_1;
+
+	public Color Color1;
+	public Color Color2;
+	public Color ColorMixed;
 	
 	private List<GameObject> solidObjects;
 	private List<GameObject> primaryColorObjects;
@@ -18,11 +22,21 @@ public class LevelInit : MonoBehaviour
 		solidObjects = GameObject.FindGameObjectsWithTag("Solid").ToList();
 		primaryColorObjects = GameObject.FindGameObjectsWithTag("Color1").ToList();
 		secondaryColorObjects = GameObject.FindGameObjectsWithTag("Color2").ToList();
-		mixedColorObjects = GameObject.FindGameObjectsWithTag("Color2").ToList();
+		mixedColorObjects = GameObject.FindGameObjectsWithTag("ColorMixed").ToList();
 		
 		foreach (var solidObject in solidObjects)
 		{
 			solidObject.GetComponent<SpriteRenderer>().color = Color.black;
+		}
+		foreach (var color1 in primaryColorObjects)
+		{
+			//color1.GetComponent<SpriteRenderer>().color = colorSet.PrimaryColor;
+			color1.GetComponent<SpriteRenderer>().color = colorSet.PrimaryColor;
+		}
+
+		foreach (var color2 in secondaryColorObjects)
+		{
+			color2.GetComponent<SpriteRenderer>().color = Color2;
 		}
 	}
 	
