@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GamepadInput : MonoBehaviour
 {
-    public static GamepadInput instance = null;
+    private static GamepadInput instance;
 
     private void Awake()
     {
@@ -14,12 +15,14 @@ public class GamepadInput : MonoBehaviour
     }
 
     // Use this for initialization
+    // ReSharper disable once Unity.RedundantEventFunction
     void Start()
     {
 
     }
 
     // Update is called once per frame
+    // ReSharper disable once Unity.RedundantEventFunction
     void Update()
     {
         //foreach (string s in Input.GetJoystickNames())
@@ -33,7 +36,8 @@ public class GamepadInput : MonoBehaviour
 
         //    i++;
         //}
-
+        
+    /*
         if (Jump())
             Debug.Log("jump pressed");
 
@@ -48,53 +52,42 @@ public class GamepadInput : MonoBehaviour
 
         if (ColorMixed())
             Debug.Log("both trigger pressed");
+        */
 
     }
 
-    private readonly string _color1_button = "Color1";
-    private readonly string _color2_button = "Color2";
-    private readonly string _horizontal = "Horizontal";
-    private readonly string _vertical = "Vertical";
-    private readonly string _horizontal_switch = "HorizontalSwitch";
-    private readonly string _vertical_switch = "VerticalSwitch";
-    private readonly double _treshold = .1;
+    private const string Color1Button = "Color1";
+    private const string Color2Button = "Color2";
+    private const string Horizontal = "Horizontal";
+    private const string HorizontalSwitch = "HorizontalSwitch";
+    private const double Tolerance = .1;
 
-    private readonly List<String> _switch_gamepad_names = new List<String>() { "Wireless Gamepad", "Unknown Pro Controller" };
+    private static readonly string[] SwitchGamepadNames = { "Wireless Gamepad", "Unknown Pro Controller" };
 
-    public float HorizontalVal()
+    private static bool IsNintendoSwitchProController(string controllerName)
     {
-        float horVal = Input.GetAxis(_horizontal);
+        return SwitchGamepadNames.Contains(controllerName);
+    }
+    
+    public static float HorizontalVal()
+    {
+        var horVal = Input.GetAxis(Horizontal);
 
-        foreach (string controller_name in Input.GetJoystickNames())
+        foreach (var controllerName in Input.GetJoystickNames())
         {
-            if (_switch_gamepad_names.Contains(controller_name) && Input.GetAxis(_horizontal_switch) != 0)
-            {
-                horVal = Input.GetAxis(_horizontal_switch);
-                break;
-            }
+            var horValSwitch = Input.GetAxis(HorizontalSwitch);
+
+            if (!IsNintendoSwitchProController(controllerName) || Math.Abs(horValSwitch) < Tolerance) continue;
+            
+            horVal = horValSwitch;
+            break;
         }
 
         return horVal;
     }
 
-    public float VerticalVal()
-    {
-        float vertVal = Input.GetAxis(_vertical);
 
-        foreach (string controller_name in Input.GetJoystickNames())
-        {
-            if (_switch_gamepad_names.Contains(controller_name) && Input.GetAxis(_vertical_switch) != 0)
-            {
-                Debug.Log("switch found");
-                vertVal = Input.GetAxis(_vertical_switch);
-                break;
-            }
-        }
-
-        return vertVal;
-    }
-
-    public bool Jump()
+    public static bool Jump()
     {
         return
             // keyboard 
@@ -104,7 +97,7 @@ public class GamepadInput : MonoBehaviour
             Input.GetKeyDown(KeyCode.JoystickButton0);
     }
 
-    public bool Dash()
+    public static bool Dash()
     {
         return
             // keyboard
@@ -114,24 +107,24 @@ public class GamepadInput : MonoBehaviour
             Input.GetKeyDown(KeyCode.JoystickButton2);
     }
 
-    public bool Color1()
+    public static bool Color1()
     {
         return
-            Input.GetAxis(_color1_button) > _treshold
-                && Input.GetAxis(_color2_button) < _treshold;
+            Input.GetAxis(Color1Button) > Tolerance
+                && Input.GetAxis(Color2Button) < Tolerance;
     }
 
-    public bool Color2()
+    public static bool Color2()
     {
         return
-            Input.GetAxis(_color1_button) < _treshold
-                && Input.GetAxis(_color2_button) > _treshold;
+            Input.GetAxis(Color1Button) < Tolerance
+                && Input.GetAxis(Color2Button) > Tolerance;
     }
 
-    public bool ColorMixed()
+    public static bool ColorMixed()
     {
         return
-            Input.GetAxis(_color1_button) > _treshold
-                && Input.GetAxis(_color2_button) > _treshold;
+            Input.GetAxis(Color1Button) > Tolerance
+                && Input.GetAxis(Color2Button) > Tolerance;
     }
 }
