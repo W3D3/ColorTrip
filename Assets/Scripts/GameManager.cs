@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 	public void deathIsEternal()
 	{
 		soundManager.deathSound.Play();
+		DeathCounter++;
 	}
 	
 	public void playDashSound()
