@@ -171,7 +171,7 @@ public class Player : MonoBehaviour {
 
 	
 		velocity.y += gravity * Time.deltaTime;
-		controller.Move (velocity * Time.deltaTime);
+		controller.Move (velocity * Time.deltaTime, input);
 	}
 	
 	void OnTriggerEnter2D(Collider2D collider)

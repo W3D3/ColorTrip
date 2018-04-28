@@ -6,7 +6,7 @@ public class Controller2D : RaycastController {
 	float maxClimbAngle = 80;
 	float maxDescendAngle = 80;
 	
-	
+	public Vector2 playerInput;
 	
 	public CollisionInfo collisions;
 
@@ -15,11 +15,16 @@ public class Controller2D : RaycastController {
 		base.Start ();
 		collisions.faceDir = 1;
 	}
+	
+	public void Move(Vector3 velocity, bool standingOnPlatform) {
+		Move (velocity, Vector2.zero, standingOnPlatform);
+	}
 
-	public void Move(Vector3 velocity, bool standingOnPlatform = false) {
+	public void Move(Vector3 velocity, Vector2 input, bool standingOnPlatform = false) {
 		UpdateRaycastOrigins ();
 		collisions.Reset ();
 		collisions.velocityOld = velocity;
+		playerInput = input;
 
 		if (velocity.x != 0) {
 			collisions.faceDir = (int)Mathf.Sign(velocity.x);
