@@ -390,7 +390,7 @@ MonoBehaviour:
   verticalRaySpacing: 0
   collider: {fileID: 0}
   playerInput: {x: 0, y: 0}
-  levelStringAdvance: 
+  levelStringAdvance: level9
 --- !u!61 &213070668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -483,7 +483,7 @@ Prefab:
     - target: {fileID: 224653708760534402, guid: 82d742c14297db341a92d4547bdd3d99,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224653708760534402, guid: 82d742c14297db341a92d4547bdd3d99,
         type: 2}
