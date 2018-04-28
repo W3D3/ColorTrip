@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;
 	
 	private LevelManager levelManager; //Store a reference to our BoardManager which will set up the level.
-	private int level = 1;
+	private int level = 2;
 	public ColorSet currentColorSet;
 	
 	//Awake is always called before any Start functions
@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
 	void InitGame()
 	{
 		//Call the SetupScene function of the BoardManager script, pass it current level number.
-		levelManager.SetupScene(level);
+		if(levelManager != null) levelManager.SetupScene(level);
+		else Debug.Log("DEBUG MODE!!!!!!!");
 	}
 
 	public void advanceLevel()

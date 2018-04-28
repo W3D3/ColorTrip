@@ -11,13 +11,12 @@ public class Player : MonoBehaviour {
 	public float dash = 10;
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
-	
+
+	private int currentColor = 0;
 
 	public Vector2 wallJumpClimb;
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
-
-	
 
 	public float wallSlideSpeedMax = 3;
 	public float wallStickTime = .25f;
@@ -29,9 +28,11 @@ public class Player : MonoBehaviour {
 	float velocityXSmoothing;
 
 	Controller2D controller;
+	private LevelInit level;
 
 	void Start() {
 		controller = GetComponent<Controller2D> ();
+		level = GetComponent<LevelInit>();
 
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -74,7 +75,45 @@ public class Player : MonoBehaviour {
 			velocity.y = 0;
 		}
 
-
+		if (Input.GetButton("Color1") && Input.GetButton("Color2"))
+		{
+			Debug.Log("Color MIXED pressed.");
+			if (currentColor != 3)
+			{
+				currentColor = 3;
+				GetComponent<SpriteRenderer>().color = GameManager.instance.currentColorSet.MixedColor;
+				level.SetColorOfBlocks(currentColor);
+			}
+		}
+		else if (Input.GetButton("Color1"))
+		{
+			Debug.Log("Color 1 pressed.");
+			if (currentColor != 1)
+			{
+				currentColor = 1;
+				GetComponent<SpriteRenderer>().color = GameManager.instance.currentColorSet.PrimaryColor;
+				level.SetColorOfBlocks(currentColor);
+			}
+		}
+		else if (Input.GetButton("Color2"))
+		{
+			Debug.Log("Color 2 pressed.");
+			if (currentColor != 2)
+			{
+				currentColor = 2;
+				GetComponent<SpriteRenderer>().color = GameManager.instance.currentColorSet.SecondaryColor;
+				level.SetColorOfBlocks(currentColor);
+			}
+		}
+		else
+		{
+			if (currentColor != 0)
+			{
+				currentColor = 0;
+				GetComponent<SpriteRenderer>().color = Color.black;
+				level.SetColorOfBlocks(currentColor);
+			}
+		}
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			if (wallSliding) {
