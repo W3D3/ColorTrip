@@ -29,10 +29,12 @@ public class Player : MonoBehaviour {
 
 	Controller2D controller;
 	private LevelInit level;
+	private GamepadInput input;
 
 	void Start() {
 		controller = GetComponent<Controller2D> ();
 		level = GetComponent<LevelInit>();
+		input = GetComponent<GamepadInput>();
 
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -75,7 +77,7 @@ public class Player : MonoBehaviour {
 			velocity.y = 0;
 		}
 
-		if (Input.GetButton("Color1") && Input.GetButton("Color2"))
+		if (this.input.ColorMixed())
 		{
 			Debug.Log("Color MIXED pressed.");
 			if (currentColor != 3)
@@ -85,7 +87,7 @@ public class Player : MonoBehaviour {
 				level.SetColorOfBlocks(currentColor);
 			}
 		}
-		else if (Input.GetButton("Color1"))
+		else if (this.input.Color1())
 		{
 			Debug.Log("Color 1 pressed.");
 			if (currentColor != 1)
@@ -95,7 +97,7 @@ public class Player : MonoBehaviour {
 				level.SetColorOfBlocks(currentColor);
 			}
 		}
-		else if (Input.GetButton("Color2"))
+		else if (this.input.Color2())
 		{
 			Debug.Log("Color 2 pressed.");
 			if (currentColor != 2)
@@ -115,7 +117,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (this.input.Jump()) {
 			if (wallSliding) {
 				/*if (wallDirX == input.x || input.x == 0) {
 					velocity.x = -wallDirX * wallJumpOff.x;
