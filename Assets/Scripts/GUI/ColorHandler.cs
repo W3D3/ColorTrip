@@ -10,13 +10,15 @@ public class ColorHandler : MonoBehaviour
     public GameObject Left_Small;
     public GameObject Right_Large;
     public GameObject Right_Small;
+    public GameObject Full;
 
     private Image img_left_large;
     private Image img_left_small;
     private Image img_right_large;
     private Image img_right_small;
+    private Image img_full;
 
-    private ColorSet colors = GameManager.instance.currentColorSet;
+    private ColorSet colors;
 
     void Start()
     {
@@ -25,18 +27,24 @@ public class ColorHandler : MonoBehaviour
         img_left_small = Left_Small.GetComponent<Image>();
         img_right_large = Right_Large.GetComponent<Image>();
         img_right_small = Right_Small.GetComponent<Image>();
+        img_full = Full.GetComponent<Image>();
 
-        //set colors
-        img_left_large.color = colors.PrimaryColor;
-        img_left_small.color = colors.PrimaryColor;
-        img_right_large.color = colors.SecondaryColor;
-        img_right_small.color = colors.SecondaryColor;
+        if (GameManager.instance != null)
+        {
+            colors = GameManager.instance.currentColorSet;
+
+            // set colors
+            img_left_large.color = colors.PrimaryColor;
+            img_left_small.color = colors.PrimaryColor;
+            img_right_large.color = colors.SecondaryColor;
+            img_right_small.color = colors.SecondaryColor;
+            img_full.color = colors.MixedColor;
+        }
 
         //disable large ones for now ... 
         img_left_large.enabled = false;
         img_right_large.enabled = false;
-
-        updateColor(colors.SecondaryColor);
+        img_full.enabled = false;
     }
 
     public void updateColor(Color color_new)
@@ -48,6 +56,7 @@ public class ColorHandler : MonoBehaviour
             img_left_small.enabled = false;
             img_right_large.enabled = false;
             img_right_small.enabled = true;
+            img_full.enabled = false;
         }
         else if (color_new == colors.SecondaryColor)
         {
@@ -56,10 +65,25 @@ public class ColorHandler : MonoBehaviour
             img_left_small.enabled = true;
             img_right_large.enabled = true;
             img_right_small.enabled = false;
+            img_full.enabled = false;
+        }
+        else if (color_new == colors.MixedColor)
+        {
+            //change ... sth other dunno
+            img_left_large.enabled = false;
+            img_left_small.enabled = false;
+            img_right_large.enabled = false;
+            img_right_small.enabled = false;
+            img_full.enabled = true;
         }
         else
         {
-            //change ... sth other dunno
+            //no color
+            img_left_large.enabled = false;
+            img_left_small.enabled = true;
+            img_right_large.enabled = false;
+            img_right_small.enabled = true;
+            img_full.enabled = false;
         }
     }
 
@@ -69,6 +93,9 @@ public class ColorHandler : MonoBehaviour
             updateColor(colors.PrimaryColor);
         else if (Input.GetAxis("Color1") == 0 && Input.GetAxis("Color2") == 1)
             updateColor(colors.SecondaryColor);
-
+        else if (Input.GetAxis("Color1") == 1 && Input.GetAxis("Color2") == 1)
+            updateColor(colors.MixedColor);
+        else
+            updateColor(new Color(0, 0, 0, 0));
     }
 }
