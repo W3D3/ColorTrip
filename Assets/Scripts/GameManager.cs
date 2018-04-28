@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 	void InitGame()
 	{
 		//Call the SetupScene function of the BoardManager script, pass it current level number.
-		if(levelManager != null && level > 0) levelManager.SetupScene(level);
+		if(levelManager != null && level >= 0) levelManager.SetupScene(level);
 		else Debug.Log("DEBUG MODE!!!!!!!");
 	}
 
