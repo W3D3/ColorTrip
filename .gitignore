@@ -117,3 +117,5 @@ _UpgradeReport_Files/
 [Pp]ackages/
 
 /Assets/Animations.meta
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs.meta
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs
