@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 	private LevelManager levelManager; //Store a reference to our LevelManager which will set up the level.
 	private SoundManager soundManager;
 	public int level = -1; //set negative in order to just load no level :O (Herry)
+	public int DeathCounter;
 
     public ColorSet currentColorSet;
 	
