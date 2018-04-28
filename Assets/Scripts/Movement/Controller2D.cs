@@ -29,6 +29,8 @@ public class Controller2D : RaycastController {
 			DescendSlope(ref velocity);
 		}
 
+	    collisions.isCheckpoint = false;
+
 		HorizontalCollisions (ref velocity);
 		if (velocity.y != 0) {
 			VerticalCollisions (ref velocity);
@@ -58,8 +60,9 @@ public class Controller2D : RaycastController {
 
 			if (hit) {
 				checkForDeath(hit);
+			    if (checkForCheckpoint(hit)) continue;
 
-				if (hit.distance == 0) {
+                if (hit.distance == 0) {
 					continue;
 				}
 			
@@ -108,6 +111,8 @@ public class Controller2D : RaycastController {
 
 			if (hit) {
 				checkForDeath(hit);
+
+			    if (checkForCheckpoint(hit)) continue;
 			 
 				velocity.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
@@ -185,7 +190,18 @@ public class Controller2D : RaycastController {
 		//TODO spawn BLOOOD
 	}
 
-	public struct CollisionInfo {
+    private bool checkForCheckpoint(RaycastHit2D hit)
+    {
+        if (hit.collider.tag == "Checkpoint")
+        {
+            collisions.isCheckpoint = true;
+            collisions.checkpoint = hit.collider.transform.position;
+        }
+        return hit.collider.tag == "Checkpoint";
+    } 
+
+
+    public struct CollisionInfo {
 		public bool above, below;
 		public bool left, right;
 
@@ -195,6 +211,8 @@ public class Controller2D : RaycastController {
 		public Vector3 velocityOld;
 		public int faceDir;
 		public bool death;
+	    public bool isCheckpoint;
+	    public Vector3 checkpoint;
 
 		public void Reset() {
 			above = below = false;

@@ -84,7 +84,7 @@ MonoBehaviour:
   jumpHeight: 4
   moveSpeed: 10
   timeToJumpApex: 0.4
-  dash: 0
+  dash: 30
   wallJumpClimb: {x: 7.5, y: 16}
   wallJumpOff: {x: 8.5, y: 7}
   wallLeap: {x: 18, y: 17}

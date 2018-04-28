@@ -9,6 +9,7 @@ TagManager:
   - Color2
   - ColorMixed
   - Death
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

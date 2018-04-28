@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
 
-	public Vector2 checkPoint;
+	public Vector3 checkPoint;
 
 	public float wallSlideSpeedMax = 3;
 	public float wallStickTime = .25f;
@@ -33,6 +33,8 @@ public class Player : MonoBehaviour {
 	private LevelInit level;
 	private GamepadInput input;
 
+    private bool canDash;
+
 	void Start() {
 		controller = GetComponent<Controller2D> ();
 		level = GetComponent<LevelInit>();
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour {
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		print ("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+
+	    canDash = true;
 	}
 
 	void Update() {
@@ -89,6 +93,17 @@ public class Player : MonoBehaviour {
 		if (controller.collisions.above || controller.collisions.below) {
 			velocity.y = 0;
 		}
+
+	    if (controller.collisions.below)
+	    {
+	        canDash = true;
+	    }
+        
+        if (controller.collisions.isCheckpoint)
+	    {
+            Debug.Log("Checkpoint set");
+	        checkPoint = controller.collisions.checkpoint;
+	    }
 
 		if (this.input.ColorMixed())
 		{
@@ -145,10 +160,10 @@ public class Player : MonoBehaviour {
 				velocity.y = jumpVelocity;
 			}
 
-			if (controller.isAirborne())
+			if (controller.isAirborne() && canDash)
 			{
-				velocity = input.normalized;
-				velocity.Scale(new Vector3(dash, 30, 0));
+				velocity.x = input.normalized.x * dash;
+			    canDash = false;
 			}
 		}
 
