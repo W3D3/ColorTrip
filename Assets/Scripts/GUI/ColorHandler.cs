@@ -89,11 +89,11 @@ public class ColorHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Color1") == 1 && Input.GetAxis("Color2") == 0)
+        if (GamepadInput.instance.Color1())
             updateColor(colors.PrimaryColor);
-        else if (Input.GetAxis("Color1") == 0 && Input.GetAxis("Color2") == 1)
+        else if (GamepadInput.instance.Color2())
             updateColor(colors.SecondaryColor);
-        else if (Input.GetAxis("Color1") == 1 && Input.GetAxis("Color2") == 1)
+        else if (GamepadInput.instance.ColorMixed())
             updateColor(colors.MixedColor);
         else
             updateColor(new Color(0, 0, 0, 0));
