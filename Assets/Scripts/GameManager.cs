@@ -56,4 +56,9 @@ public class GameManager : MonoBehaviour
 	{
 		soundManager.deathSound.Play();
 	}
+	
+	public void playDashSound()
+	{
+		soundManager.dashSound.Play();
+	}
 }

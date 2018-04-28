@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource jumpSound; //Drag a reference to the audio source which will play the sound effects.
     public AudioSource deathSound; //Drag a reference to the audio source which will play the sound effects.
+    public AudioSource dashSound; //Drag a reference to the audio source which will play the sound effects.
     //private AudioSource sfxSource; //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource; //Drag a reference to the audio source which will play the music.
     public static SoundManager instance = null; //Allows other scripts to call functions from SoundManager.             
