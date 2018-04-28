@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Wede.unity
     guid: 8ecd4d15ffc284d7dbccb85c992bc18d
   - enabled: 1
+    path: Assets/Scenes/Levels/level0.unity
+    guid: f332f6e62da374346a2e114dfd1f041d
+  - enabled: 1
     path: Assets/Scenes/Levels/level1.unity
     guid: dd0c94d12517840fe81a2584960fdd84
   - enabled: 1
     path: Assets/Scenes/Levels/level2.unity
     guid: bb485fda194144f68b86828bbaf9efbf
-  - enabled: 0
-    path: Assets/Scenes/Andi.unity
-    guid: 06f40919e98b01f459978732e1c288de
   - enabled: 1
     path: Assets/Scenes/Levels/level3.unity
     guid: 23b7d004d7751a64f95eec706d295a00
@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/level6.unity
     guid: c409e885fc137f642a151aad7251d878
+  - enabled: 0
+    path: Assets/Scenes/Andi.unity
+    guid: 06f40919e98b01f459978732e1c288de
