@@ -343,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &213070666
 MonoBehaviour:
@@ -384,7 +384,7 @@ MonoBehaviour:
   verticalRaySpacing: 0
   collider: {fileID: 0}
   playerInput: {x: 0, y: 0}
-  levelStringAdvance: Level10
+  levelStringAdvance: level10
 --- !u!61 &213070668
 BoxCollider2D:
   m_ObjectHideFlags: 0
