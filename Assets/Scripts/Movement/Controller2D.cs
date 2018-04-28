@@ -11,6 +11,8 @@ public class Controller2D : RaycastController {
 	
 	public CollisionInfo collisions;
 
+	public string levelStringAdvance;
+
 
 	public override void Start() {
 		base.Start ();
@@ -230,7 +232,7 @@ public class Controller2D : RaycastController {
 	{
 		if (hit.collider.tag == "Goal")
 		{
-			GameManager.instance.advanceLevel();
+			GameManager.instance.advanceLevel(levelStringAdvance);
 			Destroy(this.gameObject);
 		}
 

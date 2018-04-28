@@ -10,4 +10,10 @@ public class LevelManager : MonoBehaviour {
 		Debug.Log("Scene loading: " + level);
 		SceneManager.LoadScene("level" + level , LoadSceneMode.Single);
 	}
+	
+	public void SetupSceneViaName(string level)
+	{
+		Debug.Log("Scene loading: " + level);
+		SceneManager.LoadScene(level , LoadSceneMode.Single);
+	}
 }
