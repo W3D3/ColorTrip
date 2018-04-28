@@ -10,6 +10,7 @@ TagManager:
   - ColorMixed
   - Death
   - Checkpoint
+  - ZeroGravity
   layers:
   - Default
   - TransparentFX
