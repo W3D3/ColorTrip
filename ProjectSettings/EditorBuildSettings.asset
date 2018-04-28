@@ -27,8 +27,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/level4.unity
     guid: 27b6f7e5a6806430eabaaa9025c88516
   - enabled: 0
-    path: Assets/Scenes/Andi.unity
+    path: Assets/__DELETED_GUID_Trash/06f40919e98b01f459978732e1c288de
     guid: 06f40919e98b01f459978732e1c288de
   - enabled: 1
     path: Assets/Scenes/Levels/level6.unity
     guid: c409e885fc137f642a151aad7251d878
+  - enabled: 1
+    path: Assets/Scenes/Levels/level8.unity
+    guid: 42ab322062e1d446085662df86ad8793
