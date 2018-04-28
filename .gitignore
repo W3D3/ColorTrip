@@ -116,3 +116,5 @@ $RECYCLE.BIN/
 _UpgradeReport_Files/
 [Pp]ackages/
 
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs.meta
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs
