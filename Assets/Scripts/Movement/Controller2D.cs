@@ -66,6 +66,7 @@ public class Controller2D : RaycastController {
 			Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength,Color.red);
 
 			if (hit) {
+				if(checkForGoal(hit)) return;
 				checkForDeath(hit);
 			    if (checkForCheckpoint(hit)) continue;
 			    if (checkForZeroGravity(hit))
@@ -123,6 +124,7 @@ public class Controller2D : RaycastController {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength,Color.red);
 
 			if (hit) {
+				if(checkForGoal(hit)) return;
                 checkForDeath(hit);
                 if (checkForCheckpoint(hit)) continue;
 
@@ -222,6 +224,16 @@ public class Controller2D : RaycastController {
         }
         return hit.collider.tag == "Checkpoint";
     }
+	
+	private bool checkForGoal(RaycastHit2D hit)
+	{
+		if (hit.collider.tag == "Goal")
+		{
+			GameManager.instance.advanceLevel();
+		}
+
+		return hit.collider.tag == "Goal";
+	}
 
     private bool checkForZeroGravity(RaycastHit2D hit)
     {
