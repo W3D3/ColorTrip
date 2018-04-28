@@ -5,11 +5,7 @@ using UnityEngine;
 
 public class LevelInit : MonoBehaviour
 {
-	public ColorSet colorSet = Colors.COLORSET_1;
-
-	public Color Color1;
-	public Color Color2;
-	public Color ColorMixed;
+	public ColorSet colorSet = GameManager.instance.currentColorSet;
 	
 	private List<GameObject> solidObjects;
 	private List<GameObject> primaryColorObjects;
@@ -36,8 +32,10 @@ public class LevelInit : MonoBehaviour
 
 		foreach (var color2 in secondaryColorObjects)
 		{
-			color2.GetComponent<SpriteRenderer>().color = Color2;
+			color2.GetComponent<SpriteRenderer>().color = colorSet.SecondaryColor;
 		}
+		
+		
 	}
 	
 	// Update is called once per frame

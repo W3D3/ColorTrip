@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;
 	
 	private LevelManager levelManager; //Store a reference to our BoardManager which will set up the level.
-	private int level = 1; 
+	private int level = 1;
+	public ColorSet currentColorSet;
 	
 	//Awake is always called before any Start functions
 	void Awake()
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
 
 		//Get a component reference to the attached BoardManager script
 		levelManager = GetComponent<LevelManager>();
+
+		//TODO Select randomly/based on lvl number
+		currentColorSet = Colors.COLORSET_1;
 
 		//Call the InitGame function to initialize the first level 
 		InitGame();
