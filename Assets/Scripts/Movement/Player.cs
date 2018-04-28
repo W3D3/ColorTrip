@@ -160,12 +160,14 @@ public class Player : MonoBehaviour {
 				velocity.y = jumpVelocity;
 			}
 
-			if (controller.isAirborne() && canDash)
-			{
-				velocity.x = input.normalized.x * dash;
-			    canDash = false;
-			}
+			
 		}
+
+	    if (this.input.Dash() && controller.isAirborne() && canDash)
+	    {
+	        velocity.x = input.normalized.x * dash;
+	        canDash = false;
+        }
 
 	
 		velocity.y += gravity * Time.deltaTime;
