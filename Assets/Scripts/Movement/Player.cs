@@ -53,9 +53,19 @@ public class Player : MonoBehaviour {
 		int wallDirX = (controller.collisions.left) ? -1 : 1;
 
 		float targetVelocityX = input.x * moveSpeed;
-		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+	    if (controller.collisions.zeroGravity)
+	    {
+	        if (Mathf.Abs(velocity.x) < 0.0001f)
+	        {
+	            velocity.x = 1 * Mathf.Sign(velocity.x) == 0f ? 1 : Mathf.Sign(velocity.x);
+	        }
+	    }
+	    else
+	    {
+	        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+        }
 
-		bool wallSliding = false;
+        bool wallSliding = false;
 
 		if (controller.collisions.death)
 		{
@@ -66,7 +76,7 @@ public class Player : MonoBehaviour {
 			
 		}
 		
-		if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below) {
+		if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && !controller.collisions.zeroGravity) {
 			wallSliding = true;
 
 			if (velocity.y < -wallSlideSpeedMax) {
@@ -90,7 +100,7 @@ public class Player : MonoBehaviour {
 
 		}
 
-		if (controller.collisions.above || controller.collisions.below) {
+		if ((controller.collisions.above || controller.collisions.below) && !controller.collisions.zeroGravity) {
 			velocity.y = 0;
 		}
 
@@ -101,13 +111,11 @@ public class Player : MonoBehaviour {
         
         if (controller.collisions.isCheckpoint)
 	    {
-            Debug.Log("Checkpoint set");
 	        checkPoint = controller.collisions.checkpoint;
 	    }
 
 		if (this.input.ColorMixed())
 		{
-			Debug.Log("Color MIXED pressed.");
 			if (currentColor != 3)
 			{
 				currentColor = 3;
@@ -117,7 +125,6 @@ public class Player : MonoBehaviour {
 		}
 		else if (this.input.Color1())
 		{
-			Debug.Log("Color 1 pressed.");
 			if (currentColor != 1)
 			{
 				currentColor = 1;
@@ -127,7 +134,6 @@ public class Player : MonoBehaviour {
 		}
 		else if (this.input.Color2())
 		{
-			Debug.Log("Color 2 pressed.");
 			if (currentColor != 2)
 			{
 				currentColor = 2;
@@ -158,7 +164,8 @@ public class Player : MonoBehaviour {
 			}
 			if (controller.collisions.below) {
 				velocity.y = jumpVelocity;
-			}
+			    Debug.Log("jump");
+            }
 
 			
 		}
@@ -168,18 +175,13 @@ public class Player : MonoBehaviour {
 	        velocity.x = input.normalized.x * dash;
 	        canDash = false;
         }
+        
+	    if (!controller.collisions.zeroGravity)
+	    {
+	        velocity.y += gravity * Time.deltaTime;
+	    }
 
-	
-		velocity.y += gravity * Time.deltaTime;
-		controller.Move (velocity * Time.deltaTime);
+		controller.Move (velocity * Time.deltaTime, input);
 	}
 	
-	void OnTriggerEnter2D(Collider2D collider)
-	{
-		Debug.Log("Collided");
-		if(collider.gameObject.tag == "Death") // this string is your newly created tag
-		{
-			Destroy(this.gameObject);
-		}
-	}
 }

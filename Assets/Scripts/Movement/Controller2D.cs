@@ -6,7 +6,7 @@ public class Controller2D : RaycastController {
 	float maxClimbAngle = 80;
 	float maxDescendAngle = 80;
 	
-	
+	public Vector2 playerInput;
 	
 	public CollisionInfo collisions;
 
@@ -15,11 +15,16 @@ public class Controller2D : RaycastController {
 		base.Start ();
 		collisions.faceDir = 1;
 	}
+	
+	public void Move(Vector3 velocity, bool standingOnPlatform) {
+		Move (velocity, Vector2.zero, standingOnPlatform);
+	}
 
-	public void Move(Vector3 velocity, bool standingOnPlatform = false) {
+	public void Move(Vector3 velocity, Vector2 input, bool standingOnPlatform = false) {
 		UpdateRaycastOrigins ();
 		collisions.Reset ();
 		collisions.velocityOld = velocity;
+		playerInput = input;
 
 		if (velocity.x != 0) {
 			collisions.faceDir = (int)Mathf.Sign(velocity.x);
@@ -31,6 +36,7 @@ public class Controller2D : RaycastController {
 
 	    collisions.isCheckpoint = false;
 	    collisions.death = false;
+	    collisions.zeroGravity = false;
 
 		HorizontalCollisions (ref velocity);
 		if (velocity.y != 0) {
@@ -62,6 +68,12 @@ public class Controller2D : RaycastController {
 			if (hit) {
 				checkForDeath(hit);
 			    if (checkForCheckpoint(hit)) continue;
+			    if (checkForZeroGravity(hit))
+			    {
+			        collisions.left = directionX == -1;
+			        collisions.right = directionX == 1;
+                    continue;
+                };
 
                 if (hit.distance == 0) {
 					continue;
@@ -111,9 +123,16 @@ public class Controller2D : RaycastController {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength,Color.red);
 
 			if (hit) {
-				checkForDeath(hit);
+                checkForDeath(hit);
+                if (checkForCheckpoint(hit)) continue;
 
-			    if (checkForCheckpoint(hit)) continue;
+			    if (checkForZeroGravity(hit))
+			    {
+			        //collisions.below = directionY == -1;
+			        //collisions.above = directionY == 1;
+                    continue;
+                }
+			    
 			 
 				velocity.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
@@ -122,9 +141,10 @@ public class Controller2D : RaycastController {
 					velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
 				}
 
-				collisions.below = directionY == -1;
-				collisions.above = directionY == 1;
-			}
+
+			    collisions.below = directionY == -1;
+			    collisions.above = directionY == 1;
+            }
 		}
 
 		if (collisions.climbingSlope) {
@@ -201,7 +221,16 @@ public class Controller2D : RaycastController {
             collisions.checkpoint = hit.collider.transform.position;
         }
         return hit.collider.tag == "Checkpoint";
-    } 
+    }
+
+    private bool checkForZeroGravity(RaycastHit2D hit)
+    {
+        if (hit.collider.tag == "ZeroGravity")
+        {
+            collisions.zeroGravity = true;
+        }
+        return hit.collider.tag == "ZeroGravity";
+    }
 
 
     public struct CollisionInfo {
@@ -216,6 +245,7 @@ public class Controller2D : RaycastController {
 		public bool death;
 	    public bool isCheckpoint;
 	    public Vector3 checkpoint;
+        public bool zeroGravity;
 
 		public void Reset() {
 			above = below = false;
