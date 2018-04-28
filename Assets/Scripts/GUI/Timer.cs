@@ -20,21 +20,18 @@ public class Timer : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		float t = Time.time - startTime;
-
-		string minutes = padZeroes(((int) t / 60).ToString(), 2);
-		string seconds = padZeroes(((int) t % 60).ToString(), 2);
-		timerText.text = minutes + ":" + seconds;
-
+		timerText.text = getTimeString();
 	}
 
-	private string padZeroes(String numberString, int length)
+	public float getCurrentTime()
 	{
-		for (int i = length - numberString.Length; i < length; i++)
-		{
-			numberString = "0" + numberString;
-		}
+		return Time.time - startTime;
+	}
 
-		return numberString;
+	public string getTimeString()
+	{
+		var time = getCurrentTime();
+
+		return String.Format("{0:D2}:{1:D2}", (int) time / 60, (int) time % 60);
 	}
 }
