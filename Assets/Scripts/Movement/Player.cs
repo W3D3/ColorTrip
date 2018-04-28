@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
 
-	public Vector2 checkPoint;
+	public Vector3 checkPoint;
 
 	public float wallSlideSpeedMax = 3;
 	public float wallStickTime = .25f;
@@ -97,6 +97,12 @@ public class Player : MonoBehaviour {
 	    if (controller.collisions.below)
 	    {
 	        canDash = true;
+	    }
+        
+        if (controller.collisions.isCheckpoint)
+	    {
+            Debug.Log("Checkpoint set");
+	        checkPoint = controller.collisions.checkpoint;
 	    }
 
 		if (this.input.ColorMixed())
