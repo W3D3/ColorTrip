@@ -30,6 +30,7 @@ public class Controller2D : RaycastController {
 		}
 
 	    collisions.isCheckpoint = false;
+	    collisions.death = false;
 
 		HorizontalCollisions (ref velocity);
 		if (velocity.y != 0) {
@@ -186,8 +187,10 @@ public class Controller2D : RaycastController {
 
 	private void checkForDeath(RaycastHit2D hit)
 	{
-		this.collisions.death = hit.collider.tag == "Death";
-		//TODO spawn BLOOOD
+	    if (hit.collider.tag == "Death")
+	    {
+	        collisions.death = true;
+	    }
 	}
 
     private bool checkForCheckpoint(RaycastHit2D hit)
