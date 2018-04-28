@@ -71,8 +71,8 @@ public class Controller2D : RaycastController {
 			    if (checkForCheckpoint(hit)) continue;
 			    if (checkForZeroGravity(hit))
 			    {
-			        collisions.left = directionX == -1;
-			        collisions.right = directionX == 1;
+			        //collisions.left = directionX == -1;
+			        //collisions.right = directionX == 1;
                     continue;
                 };
 
