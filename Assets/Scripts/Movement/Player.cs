@@ -12,10 +12,8 @@ public class Player : MonoBehaviour {
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
 
-	private int currentColor = 0;
+	private int currentColor;
 
-	public Vector2 wallJumpClimb;
-	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
 
 	public Vector3 checkPoint;
@@ -31,14 +29,12 @@ public class Player : MonoBehaviour {
 
 	Controller2D controller;
 	private LevelInit level;
-	private GamepadInput input;
 
     private bool canDash;
 
 	void Start() {
 		controller = GetComponent<Controller2D> ();
 		level = GetComponent<LevelInit>();
-		input = GetComponent<GamepadInput>();
 		checkPoint = this.transform.position;
 
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
