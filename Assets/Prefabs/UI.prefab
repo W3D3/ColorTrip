@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 222496023705160024}
   - component: {fileID: 114078000409148152}
   - component: {fileID: 114587989397796586}
+  - component: {fileID: 114618001429966910}
   m_Layer: 5
   m_Name: DeathCounter
   m_TagString: Untagged
@@ -450,6 +451,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114618001429966910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583693512753768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114662446025331812
 MonoBehaviour:
   m_ObjectHideFlags: 1
