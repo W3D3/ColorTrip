@@ -65,7 +65,6 @@ public class Player : MonoBehaviour {
 
 		if (controller.collisions.death)
 		{
-			GameManager.instance.DeathCounter++;
 			GameManager.instance.deathIsEternal();
 			this.transform.position = checkPoint;
 			this.velocity = Vector3.zero;

@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 8
+  DeathCounter: 0
 --- !u!82 &204779488
 AudioSource:
   m_ObjectHideFlags: 0
