@@ -10,6 +10,7 @@ TagManager:
   - ColorMixed
   - Death
   - Checkpoint
+  - Goal
   layers:
   - Default
   - TransparentFX
