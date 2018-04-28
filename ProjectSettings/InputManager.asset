@@ -179,7 +179,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 1
+    axis: 10
     joyNum: 0
   - serializedVersion: 3
     m_Name: VerticalSwitch
@@ -195,5 +195,5 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 11
     joyNum: 0

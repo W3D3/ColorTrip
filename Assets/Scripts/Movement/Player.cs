@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update() {
-		Vector2 input = new Vector2 (this.input.HorizontalVal(), this.input.VerticalVal());
+		Vector2 input = new Vector2 (GamepadInput.HorizontalVal(), 0);
 		int wallDirX = (controller.collisions.left) ? -1 : 1;
 
 		float targetVelocityX = input.x * moveSpeed;
@@ -114,7 +114,7 @@ public class Player : MonoBehaviour {
 	        checkPoint = controller.collisions.checkpoint;
 	    }
 
-		if (this.input.ColorMixed())
+		if (GamepadInput.ColorMixed())
 		{
 			if (currentColor != 3)
 			{
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour {
 				level.SetColorOfBlocks(currentColor);
 			}
 		}
-		else if (this.input.Color1())
+		else if (GamepadInput.Color1())
 		{
 			if (currentColor != 1)
 			{
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour {
 				level.SetColorOfBlocks(currentColor);
 			}
 		}
-		else if (this.input.Color2())
+		else if (GamepadInput.Color2())
 		{
 			if (currentColor != 2)
 			{
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		if (this.input.Jump()) {
+		if (GamepadInput.Jump()) {
 			if (wallSliding) {
 				/*if (wallDirX == input.x || input.x == 0) {
 					velocity.x = -wallDirX * wallJumpOff.x;
@@ -170,7 +170,7 @@ public class Player : MonoBehaviour {
 			
 		}
 
-	    if (this.input.Dash() && controller.isAirborne() && canDash)
+	    if (GamepadInput.Dash() && controller.isAirborne() && canDash)
 	    {
 	        velocity.x = input.normalized.x * dash;
 	        canDash = false;
