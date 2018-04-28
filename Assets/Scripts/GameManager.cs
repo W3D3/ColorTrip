@@ -40,11 +40,14 @@ public class GameManager : MonoBehaviour
 		else Debug.Log("DEBUG MODE!!!!!!!");
 	}
 
-	public void advanceLevel()
+	public void advanceLevel(int number)
 	{
-		Debug.Log(level);
-		this.level++;
-		levelManager.SetupScene(level);
+		levelManager.SetupScene(number);
+	}
+	
+	public void advanceLevel(string levelName)
+	{
+		levelManager.SetupSceneViaName(levelName);
 	}
 
 	public void playJumpSound()
