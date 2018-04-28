@@ -4,8 +4,8 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance = null;
 	
-	private LevelManager levelManager; //Store a reference to our BoardManager which will set up the level.
-
+	private LevelManager levelManager; //Store a reference to our LevelManager which will set up the level.
+	private SoundManager soundManager;
 	public int level = -1; //set negative in order to just load no level :O (Herry)
 
     public ColorSet currentColorSet;
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
 		//Get a component reference to the attached BoardManager script
 		levelManager = GetComponent<LevelManager>();
+		soundManager = GetComponent<SoundManager>();
 
 		//TODO Select randomly/based on lvl number
 		currentColorSet = Colors.COLORSET_1;
@@ -44,5 +45,15 @@ public class GameManager : MonoBehaviour
 		Debug.Log(level);
 		this.level++;
 		levelManager.SetupScene(level);
+	}
+
+	public void playJumpSound()
+	{
+		soundManager.jumpSound.Play();
+	}
+	
+	public void deathIsEternal()
+	{
+		soundManager.deathSound.Play();
 	}
 }
