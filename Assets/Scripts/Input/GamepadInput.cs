@@ -37,8 +37,8 @@ public class GamepadInput : MonoBehaviour
 
     private readonly string _jump_button_name = "JumpButton";
     private readonly string _dash_button_name = "DashButton";
-    private readonly string _xbox_left_trigger_name = "LeftTrigger";
-    private readonly string _xbox_right_trigger_name = "RightTrigger";
+    private readonly string _color1_button = "Color1";
+    private readonly string _color2_button = "Color2";
 
     public bool Jump()
     {
@@ -60,8 +60,8 @@ public class GamepadInput : MonoBehaviour
                 && !Input.GetKey(KeyCode.Joystick1Button7)
             ||
             // xbox controller
-            Input.GetAxis(_xbox_left_trigger_name) > .5
-                && Input.GetAxis(_xbox_right_trigger_name) < .5;
+            Input.GetAxis(_color1_button) > .5
+                && Input.GetAxis(_color2_button) < .5;
     }
 
     public bool Color2()
@@ -72,8 +72,8 @@ public class GamepadInput : MonoBehaviour
                 && Input.GetKey(KeyCode.Joystick1Button7)
             ||
             // xbox controller
-            Input.GetAxis(_xbox_left_trigger_name) < .5
-                && Input.GetAxis(_xbox_right_trigger_name) > .5;
+            Input.GetAxis(_color1_button) < .5
+                && Input.GetAxis(_color2_button) > .5;
     }
 
     public bool ColorMixed()
@@ -84,8 +84,8 @@ public class GamepadInput : MonoBehaviour
                 && Input.GetKey(KeyCode.Joystick1Button7)
             ||
             // xbox controller
-            Input.GetAxis(_xbox_left_trigger_name) > .5
-                && Input.GetAxis(_xbox_right_trigger_name) > .5;
+            Input.GetAxis(_color1_button) > .5
+                && Input.GetAxis(_color2_button) > .5;
         ;
     }
 }
