@@ -24,7 +24,7 @@ public class DeathCounterHandler : MonoBehaviour
 	void UpdateText()
 	{
 		var deaths = GameManager.instance.DeathCounter;
-		var newText = deaths + deaths == 1 ? " Death" : " Deaths";
+		var newText = deaths + (deaths == 1 ? " Death" : " Deaths");
 
 		
 		
