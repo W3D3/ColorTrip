@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 20422178771399936}
   - component: {fileID: 124722182090448342}
   - component: {fileID: 81200727157527758}
-  - component: {fileID: 114434098220990924}
+  - component: {fileID: 114373002728225138}
   m_Layer: 0
   m_Name: LevelCamera
   m_TagString: MainCamera
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352509025579480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.08, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352509025579480}
   m_Enabled: 1
---- !u!114 &114434098220990924
+--- !u!114 &114373002728225138
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
