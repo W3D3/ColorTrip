@@ -15,13 +15,12 @@ public class DeathCounterHandler : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 		UpdateText();
-
 	}
 
 
 	void UpdateText()
 	{
-		var deaths = GameManager.instance.DeathCounter;
+		var deaths = StatsManager.Instance.DeathCounter;
 		var newText = deaths + (deaths == 1 ? " Death" : " Deaths");
 
 		_deathCounter.text = newText;

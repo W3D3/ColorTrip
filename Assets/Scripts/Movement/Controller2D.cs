@@ -232,6 +232,7 @@ public class Controller2D : RaycastController {
 	{
 		if (hit.collider.tag == "Goal")
 		{
+			StatsManager.Instance.PushLevel();
 			GameManager.instance.advanceLevel(levelStringAdvance);
 			Destroy(this.gameObject);
 		}

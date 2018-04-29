@@ -164,7 +164,6 @@ public class Player : MonoBehaviour {
 			if (controller.collisions.below) {
 				GameManager.instance.playJumpSound();
 				velocity.y = jumpVelocity;
-			    Debug.Log("jump");
             }
 
 			
