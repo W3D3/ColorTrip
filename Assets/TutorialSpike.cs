@@ -22,6 +22,5 @@ public class TutorialSpike : MonoBehaviour
         {
             targetObject.GetComponent<SpriteRenderer>().enabled = true;
         }
-        Debug.Log("Collision");
     }
 }
