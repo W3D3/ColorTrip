@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 222987263831585810}
   - component: {fileID: 114565889243057188}
   - component: {fileID: 114110626207753120}
+  - component: {fileID: 114685245038393432}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -294,13 +295,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e9083f098d85a46e8bc782df1b663533, type: 3}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: 32f02f65ad6f8405783443aec83d50e3, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -549,6 +550,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114685245038393432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563449661397200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114787178605930346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -724,8 +739,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -144.93, y: -93.3}
-  m_SizeDelta: {x: 289.85, y: 132.83}
+  m_AnchoredPosition: {x: -164.93, y: -70}
+  m_SizeDelta: {x: 289.85, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224374254554299060
 RectTransform:
@@ -801,7 +816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 99.5, y: -57.4}
+  m_AnchoredPosition: {x: 99.5, y: -70}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224729401863736570
