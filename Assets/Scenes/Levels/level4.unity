@@ -1012,9 +1012,9 @@ Transform:
   - {fileID: 360515865}
   - {fileID: 344667592}
   - {fileID: 753607450}
+  - {fileID: 1778626041}
   - {fileID: 268710695}
   - {fileID: 1530588629}
-  - {fileID: 1778626041}
   - {fileID: 445620292}
   - {fileID: 932114710}
   - {fileID: 888225249}
@@ -3334,7 +3334,7 @@ Prefab:
     - target: {fileID: 114746599339577402, guid: cd7c8fea36cbf487e84a3d3e7980a70e,
         type: 2}
       propertyPath: levelStringAdvance
-      value: level5
+      value: level2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd7c8fea36cbf487e84a3d3e7980a70e, type: 2}
@@ -3382,7 +3382,7 @@ Transform:
   - {fileID: 1956135034}
   - {fileID: 1271051848}
   m_Father: {fileID: 408845333}
-  m_RootOrder: 30
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1804094031 stripped
 Transform:
