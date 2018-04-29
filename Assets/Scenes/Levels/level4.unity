@@ -985,10 +985,10 @@ Transform:
   m_LocalScale: {x: 19.346523, y: 1, z: 1}
   m_Children:
   - {fileID: 1675778201}
-  - {fileID: 1656849631}
   - {fileID: 986845673}
-  - {fileID: 1420925651}
+  - {fileID: 1656849631}
   - {fileID: 1897498857}
+  - {fileID: 1420925651}
   - {fileID: 1625417269}
   - {fileID: 615292975}
   - {fileID: 2131013005}
@@ -1014,9 +1014,9 @@ Transform:
   - {fileID: 753607450}
   - {fileID: 268710695}
   - {fileID: 1530588629}
+  - {fileID: 1778626041}
   - {fileID: 445620292}
   - {fileID: 932114710}
-  - {fileID: 1778626041}
   - {fileID: 888225249}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1869,7 +1869,7 @@ Transform:
   m_LocalScale: {x: 1.1003844, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408845333}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &986845674
 SpriteRenderer:
@@ -3334,7 +3334,7 @@ Prefab:
     - target: {fileID: 114746599339577402, guid: cd7c8fea36cbf487e84a3d3e7980a70e,
         type: 2}
       propertyPath: levelStringAdvance
-      value: level6
+      value: level5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd7c8fea36cbf487e84a3d3e7980a70e, type: 2}
@@ -3382,7 +3382,7 @@ Transform:
   - {fileID: 1956135034}
   - {fileID: 1271051848}
   m_Father: {fileID: 408845333}
-  m_RootOrder: 32
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1804094031 stripped
 Transform:
@@ -3572,7 +3572,7 @@ Transform:
   m_LocalScale: {x: 1.042794, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408845333}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1897498858
 BoxCollider2D:
