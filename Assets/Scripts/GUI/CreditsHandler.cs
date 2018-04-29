@@ -12,13 +12,7 @@ public class CreditsHandler : MonoBehaviour
 
 	// Use this for initialization
 	void Start ()
-	{
-		
-		StatsManager.Instance.PushLevel();		
-		StatsManager.Instance.PushLevel();		
-		StatsManager.Instance.PushLevel();		
-		StatsManager.Instance.PushLevel();
-		
+	{	
 		DeathCounterText.text = StatsManager.Instance.DeathCounter.ToString();
 		TimeNeededText.text = StatsManager.GetTimeFormatted(StatsManager.Instance.TimeNeeded);
 		DetailedStats.text = buildDetailedStats();
