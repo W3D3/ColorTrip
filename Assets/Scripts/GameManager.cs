@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 	private LevelManager levelManager; //Store a reference to our LevelManager which will set up the level.
 	private SoundManager soundManager;
 	public int level = -1; //set negative in order to just load no level :O (Herry)
-	public int DeathCounter;
 
     public ColorSet currentColorSet;
 	
@@ -37,7 +36,10 @@ public class GameManager : MonoBehaviour
 	void InitGame()
 	{
 		//Call the SetupScene function of the BoardManager script, pass it current level number.
-		if(levelManager != null && level >= 0) levelManager.SetupScene(level);
+		if (levelManager != null && level >= 0)
+		{
+			levelManager.SetupScene(level);
+		}
 		else Debug.LogError("DU BIST 1 ID1OT!!!111!elfone^^^^2");
 	}
 
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour
 	public void deathIsEternal()
 	{
 		soundManager.deathSound.Play();
-		DeathCounter++;
+		StatsManager.Instance.CurrentStats().DeathCount++;
 	}
 	
 	public void playDashSound()
