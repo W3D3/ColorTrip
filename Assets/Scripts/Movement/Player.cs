@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Assertions.Must;
 
@@ -163,7 +164,6 @@ public class Player : MonoBehaviour {
 			if (controller.collisions.below) {
 				GameManager.instance.playJumpSound();
 				velocity.y = jumpVelocity;
-			    Debug.Log("jump");
             }
 
 			
@@ -173,6 +173,7 @@ public class Player : MonoBehaviour {
 	    {
 		    GameManager.instance.playDashSound();
 	        velocity.x = input.normalized.x * dash;
+		    velocity.y = 7; //very importante
 	        canDash = false;
         }
         

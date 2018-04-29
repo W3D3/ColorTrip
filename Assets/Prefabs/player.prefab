@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114210287540769688}
   m_Layer: 9
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   verticalRaySpacing: 0
   collider: {fileID: 0}
   playerInput: {x: 0, y: 0}
+  levelStringAdvance: 
 --- !u!212 &212398124112815168
 SpriteRenderer:
   m_ObjectHideFlags: 1
