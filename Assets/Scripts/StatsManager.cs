@@ -61,9 +61,9 @@ public class StatsManager {
 		Debug.LogError(errors);
 	}
 
-	public List<LevelStats> Stats
+	public List<LevelStats> GetStats()
 	{
-		get { return new List<LevelStats>(_levelStats); }
+		return _levelStats.Where( ls => ls.TimeNeeded >= 1 ).ToList();
 	}
 
 	public static string GetTimeFormatted(float time)

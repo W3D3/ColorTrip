@@ -94,7 +94,10 @@ public class GamepadInput : MonoBehaviour
             Input.GetKeyDown(KeyCode.Space)
             ||
             // switch and xbox controller
-            Input.GetKeyDown(KeyCode.JoystickButton0);
+            Input.GetKeyDown(KeyCode.JoystickButton0)
+            ||
+            // macOS binding
+            Input.GetKeyDown(KeyCode.JoystickButton16); 
     }
 
     public static bool Dash()
@@ -104,7 +107,10 @@ public class GamepadInput : MonoBehaviour
             Input.GetKeyDown(KeyCode.LeftShift)
             ||
             // switch and xbox controller
-            Input.GetKeyDown(KeyCode.JoystickButton2);
+            Input.GetKeyDown(KeyCode.JoystickButton2)
+            ||
+            // macOS binding
+            Input.GetKeyDown(KeyCode.JoystickButton18); 
     }
 
     public static bool Color1()
