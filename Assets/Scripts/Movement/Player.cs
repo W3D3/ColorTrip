@@ -168,7 +168,7 @@ public class Player : MonoBehaviour {
 			
 		}
 
-	    if (GamepadInput.Dash() && canDash)
+	    if (GamepadInput.Dash() && canDash && input.normalized.x != 0)
 	    {
 		    GameManager.instance.playDashSound();
 	        velocity.x = input.normalized.x * dash;
