@@ -16,8 +16,10 @@ public class LevelInit : MonoBehaviour
 	private List<GameObject> mixedColorObjects;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+        if (GameManager.instance == null) return;
+
 		colorSet = GameManager.instance.currentColorSet;
 		solidObjects = GameObject.FindGameObjectsWithTag("Solid").ToList();
         primaryColorObjects = GameObject.FindGameObjectsWithTag("Color1").ToList();

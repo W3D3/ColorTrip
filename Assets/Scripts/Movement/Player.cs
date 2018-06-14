@@ -111,43 +111,6 @@ public class Player : MonoBehaviour {
 	        checkPoint = controller.collisions.checkpoint;
 	    }
 
-		if (GamepadInput.ColorMixed())
-		{
-			if (currentColor != 3)
-			{
-				currentColor = 3;
-				GetComponent<SpriteRenderer>().color = GameManager.instance.currentColorSet.MixedColor;
-				level.SetColorOfBlocks(currentColor);
-			}
-		}
-		else if (GamepadInput.Color1())
-		{
-			if (currentColor != 1)
-			{
-				currentColor = 1;
-				GetComponent<SpriteRenderer>().color = GameManager.instance.currentColorSet.PrimaryColor;
-				level.SetColorOfBlocks(currentColor);
-			}
-		}
-		else if (GamepadInput.Color2())
-		{
-			if (currentColor != 2)
-			{
-				currentColor = 2;
-				GetComponent<SpriteRenderer>().color = GameManager.instance.currentColorSet.SecondaryColor;
-				level.SetColorOfBlocks(currentColor);
-			}
-		}
-		else
-		{
-			if (currentColor != 0)
-			{
-				currentColor = 0;
-				GetComponent<SpriteRenderer>().color = Color.black;
-				level.SetColorOfBlocks(currentColor);
-			}
-		}
-
 		if (GamepadInput.Jump()) {
 			if (wallSliding) {
 				GameManager.instance.playJumpSound();
@@ -161,7 +124,7 @@ public class Player : MonoBehaviour {
 				//}
 			}
 			if (controller.collisions.below) {
-				GameManager.instance.playJumpSound();
+				//GameManager.instance.playJumpSound();
 				velocity.y = jumpVelocity;
             }
 

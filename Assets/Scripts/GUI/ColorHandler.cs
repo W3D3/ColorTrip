@@ -40,6 +40,10 @@ public class ColorHandler : MonoBehaviour
             img_right_small.color = colors.SecondaryColor;
             img_full.color = colors.MixedColor;
         }
+        else
+        {
+            colors = Colors.COLORSET_1;
+        }
 
         //disable large ones for now ... 
         img_left_large.enabled = false;
@@ -49,6 +53,8 @@ public class ColorHandler : MonoBehaviour
 
     public void updateColor(Color color_new)
     {
+        if (colors == null) return;
+
         if(color_new == colors.PrimaryColor)
         {
             //change left
