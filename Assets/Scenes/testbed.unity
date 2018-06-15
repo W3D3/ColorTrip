@@ -496,7 +496,7 @@ Prefab:
     - target: {fileID: 114538601654344666, guid: 055ef05932fd9ab40bbcc20d9059dce4,
         type: 2}
       propertyPath: Theme
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 055ef05932fd9ab40bbcc20d9059dce4, type: 2}
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9065e3fda921c24c8a0327862b36621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RespawnPosition: {x: 0.5, y: 3, z: 0}
+  RespawnPosition: {x: 0.5, y: 8, z: 0}
   Number: 1
   ColorActivated:
     serializedVersion: 2
