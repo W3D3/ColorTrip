@@ -1,7 +1,8 @@
-﻿using Assets.Scripts.Movement;
+﻿using Assets.Scripts.Level;
+using Assets.Scripts.Movement;
 using UnityEngine;
 
-namespace Assets.Scripts.Level
+namespace Assets.Scripts.Interaction
 {
     public class CheckpointController : MonoBehaviour
     {
@@ -9,6 +10,8 @@ namespace Assets.Scripts.Level
         public int Number;
         public Color32 ColorActivated;
         public bool ColorSet;
+
+        public GameObject StatusText;
 
         private void Start()
         {
@@ -33,10 +36,12 @@ namespace Assets.Scripts.Level
             if (player.LastCheckpoint == null)
             {
                 player.LastCheckpoint = this;
+                ShowStatusText();
             }
             else if (player.LastCheckpoint.Number < Number)
             {
                 player.LastCheckpoint = this;
+                ShowStatusText();
             }
 
             if (!ColorSet)
@@ -49,6 +54,14 @@ namespace Assets.Scripts.Level
         public Vector3 GetRespawnPosition()
         {
             return RespawnPosition + transform.position;
+        }
+
+        private void ShowStatusText()
+        {
+            if (StatusText == null) return;
+
+            var statusController = StatusText.GetComponent<StatusTextController>();
+            statusController.ShowStatus("CHECKPOINT");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Level;
+﻿using Assets.Scripts.Interaction;
 using UnityEngine;
 
 namespace Assets.Scripts.Movement
@@ -161,7 +161,13 @@ namespace Assets.Scripts.Movement
         public void Respawn()
         {
             transform.position = LastCheckpoint == null ? InitialPosition : LastCheckpoint.GetRespawnPosition();
-            velocity = Vector3.zero;
+            velocity = Vector3.zero;            
+        }
+
+        public void Kill()
+        {
+            // todo respawn for now -> trigger gui interaction
+            Respawn();
         }
 
         #endregion
