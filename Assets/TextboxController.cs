@@ -3,20 +3,17 @@ using UnityEngine.UI;
 
 namespace Assets
 {
-    public class StatusTextController : MonoBehaviour
+    public class TextboxController : MonoBehaviour
     {
         public float Alpha;
         public float Duration;
         public float FadeDuration;
-        public Text StatusText;
+        public Text Text;
 
 
-        public void ShowStatus(string status)
+        public void Show(string text)
         {
-            if (StatusText.text != status)
-            {
-                StatusText.text = status;
-            }
+            Text.text = text;
 
             gameObject.SetActive(true);
 
@@ -27,7 +24,7 @@ namespace Assets
             Invoke("TriggerFadeOut", Duration - FadeDuration);
         }
 
-        public void HideStatus()
+        public void Hide()
         {
             gameObject.SetActive(false);
         }
@@ -36,7 +33,7 @@ namespace Assets
         {
             var image = GetComponent<Image>();
             image.CrossFadeAlpha(0f, FadeDuration, true);
-            Invoke("HideStatus", FadeDuration);
+            Invoke("Hide", FadeDuration);
         }
     }
 }

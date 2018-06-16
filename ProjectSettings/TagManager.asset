@@ -16,8 +16,8 @@ TagManager:
   - AntiColor2
   - AntiColorMixed
   - Spike
-  - StatusText
   - paraLACHS
+  - Textbox
   layers:
   - Default
   - TransparentFX

@@ -20,12 +20,16 @@ public class CameraFollow : MonoBehaviour {
 
 	bool lookAheadStopped;
 
-    public GameObject Horizont;
-    public GameObject Background;
-    public GameObject Foreground;
+    public GameObject ParaLachs;
+    private GameObject _horizon;
+    private GameObject _background;
+    private GameObject _foreground;
 
 	void Start() {
 		focusArea = new FocusArea (target.collider.bounds, focusAreaSize);
+	    _horizon = ParaLachs.transform.GetChild(0).gameObject;
+	    _background = ParaLachs.transform.GetChild(1).gameObject;
+	    _foreground = ParaLachs.transform.GetChild(2).gameObject;
 	}
 
 	void LateUpdate() {
@@ -34,10 +38,11 @@ public class CameraFollow : MonoBehaviour {
 		var focusPosition = focusArea.centre + Vector2.up * verticalOffset;
 
         // paraLACHS effect
+	    
         var position = new Vector3(focusArea.velocity.x, 0, 0);
-	    if (Horizont != null) Horizont.transform.position += position * 0.6f;
-        if (Background != null) Background.transform.position += position * 0.3f;
-	    if (Foreground != null) Foreground.transform.position -= position * 0.3f;
+	    _horizon.transform.position += position * 0.6f;
+        _background.transform.position += position * 0.3f;
+	    _foreground.transform.position -= position * 0.3f;
 
 		if (focusArea.velocity.x != 0) {
 			lookAheadDirX = Mathf.Sign (focusArea.velocity.x);

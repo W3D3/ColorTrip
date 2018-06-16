@@ -11,7 +11,7 @@ namespace Assets.Scripts.Interaction
         public Color32 ColorActivated;
         public bool ColorSet;
 
-        public GameObject StatusText;
+        public TextboxController Textbox;
 
         private void Start()
         {
@@ -58,10 +58,9 @@ namespace Assets.Scripts.Interaction
 
         private void ShowStatusText()
         {
-            if (StatusText == null) return;
+            if (Textbox == null) return;
 
-            var statusController = StatusText.GetComponent<StatusTextController>();
-            statusController.ShowStatus("CHECKPOINT");
+            Textbox.Show("CHECKPOINT");
         }
     }
 }
