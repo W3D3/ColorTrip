@@ -17,6 +17,7 @@ TagManager:
   - AntiColorMixed
   - Spike
   - StatusText
+  - paraLACHS
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Horizont
+    uniqueID: 4181982993
+    locked: 0
   - name: Background
     uniqueID: 1151120027
     locked: 0

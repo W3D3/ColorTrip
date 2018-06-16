@@ -70,8 +70,6 @@ public class Controller2D : RaycastController {
 
 			if (hit) {
 				if(checkForGoal(hit)) return;
-				checkForDeath(hit);
-			    if (checkForCheckpoint(hit)) continue;
 			    if (checkForZeroGravity(hit))
 			    {
 			        //collisions.left = directionX == -1;
@@ -128,8 +126,6 @@ public class Controller2D : RaycastController {
 
 			if (hit) {
 				if(checkForGoal(hit)) return;
-                checkForDeath(hit);
-                if (checkForCheckpoint(hit)) continue;
 
 			    if (checkForZeroGravity(hit))
 			    {
@@ -209,25 +205,7 @@ public class Controller2D : RaycastController {
 	{
 		return !collisions.above && !collisions.below && !collisions.left && !collisions.right;
 	}
-
-	private void checkForDeath(RaycastHit2D hit)
-	{
-	    if (hit.collider.tag == "Death")
-	    {
-	        collisions.death = true;
-	    }
-	}
-
-    private bool checkForCheckpoint(RaycastHit2D hit)
-    {
-        if (hit.collider.tag == "Checkpoint")
-        {
-            collisions.isCheckpoint = true;
-            collisions.checkpoint = hit.collider.transform.position;
-        }
-        return hit.collider.tag == "Checkpoint";
-    }
-	
+    
 	private bool checkForGoal(RaycastHit2D hit)
 	{
 		if (hit.collider.tag == "Goal")

@@ -119,7 +119,7 @@ namespace Assets.Scripts.Movement
 
             if (GamepadInput.Jump()) {
                 if (wallSliding) {
-                    GameManager.instance.playJumpSound();
+                    //GameManager.instance.playJumpSound();
                     /*if (wallDirX == input.x || input.x == 0) {
 					velocity.x = -wallDirX * wallJumpOff.x;
 					velocity.y = wallJumpOff.y;
@@ -139,7 +139,7 @@ namespace Assets.Scripts.Movement
 
             if (GamepadInput.Dash() && canDash && input.normalized.x != 0)
             {
-                GameManager.instance.playDashSound();
+                //GameManager.instance.playDashSound();
                 velocity.x = input.normalized.x * dash;
                 velocity.y = 7; //very importante
                 canDash = false;
