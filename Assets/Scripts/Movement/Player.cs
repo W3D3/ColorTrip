@@ -35,6 +35,7 @@ namespace Assets.Scripts.Movement
 
         public CheckpointController LastCheckpoint;
         public Vector3 InitialPosition;
+        public bool InputEnabled;
 
         void Start() {
             controller = GetComponent<Controller2D> ();
@@ -168,6 +169,15 @@ namespace Assets.Scripts.Movement
         {
             // todo respawn for now -> trigger gui interaction
             Respawn();
+        }
+
+        /// <summary>
+        /// Enables or disables input for player
+        /// </summary>
+        /// <param name="flag">True to enable input, false to disable</param>
+        public void EnableInput(bool flag)
+        {
+            InputEnabled = flag;
         }
 
         #endregion

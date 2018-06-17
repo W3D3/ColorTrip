@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class GamepadInput : MonoBehaviour
 {
-    private static GamepadInput instance;
+    private static GamepadInput _instance;
+
+    public static bool EnablePlayerControls = true;
+    public static bool EnableColorControls = true;
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (_instance == null)
+            _instance = this;
     }
 
     // Use this for initialization
@@ -83,54 +84,42 @@ public class GamepadInput : MonoBehaviour
             break;
         }
 
-        return horVal;
+        return EnablePlayerControls ? horVal : 0;
     }
 
 
     public static bool Jump()
     {
-        return
-            // keyboard 
-            Input.GetKeyDown(KeyCode.Space)
-            ||
-            // switch and xbox controller
-            Input.GetKeyDown(KeyCode.JoystickButton0)
-            ||
-            // macOS binding
-            Input.GetKeyDown(KeyCode.JoystickButton16); 
+        return EnableColorControls && (Input.GetKeyDown(KeyCode.Space) || // keyboard
+                                       Input.GetKeyDown(KeyCode.JoystickButton0) || // switch and xbox controller
+                                       Input.GetKeyDown(KeyCode.JoystickButton16)); // macOS binding
     }
 
     public static bool Dash()
     {
-        return
-            // keyboard
-            Input.GetKeyDown(KeyCode.LeftShift)
-            ||
-            // switch and xbox controller
-            Input.GetKeyDown(KeyCode.JoystickButton2)
-            ||
-            // macOS binding
-            Input.GetKeyDown(KeyCode.JoystickButton18); 
+        return EnableColorControls && (Input.GetKeyDown(KeyCode.LeftShift) || // keyboard
+                                       Input.GetKeyDown(KeyCode.JoystickButton2) || // switch and xbox controller
+                                       Input.GetKeyDown(KeyCode.JoystickButton18)); // macOS binding
     }
 
     public static bool Color1()
     {
-        return
-            Input.GetAxis(Color1Button) > Tolerance
-                && Input.GetAxis(Color2Button) < Tolerance;
+        return EnableColorControls &&
+               Input.GetAxis(Color1Button) > Tolerance &&
+               Input.GetAxis(Color2Button) < Tolerance;
     }
 
     public static bool Color2()
     {
-        return
-            Input.GetAxis(Color1Button) < Tolerance
-                && Input.GetAxis(Color2Button) > Tolerance;
+        return EnableColorControls &&
+               Input.GetAxis(Color1Button) < Tolerance &&
+               Input.GetAxis(Color2Button) > Tolerance;
     }
 
     public static bool ColorMixed()
     {
-        return
-            Input.GetAxis(Color1Button) > Tolerance
-                && Input.GetAxis(Color2Button) > Tolerance;
+        return EnableColorControls &&
+               Input.GetAxis(Color1Button) > Tolerance &&
+               Input.GetAxis(Color2Button) > Tolerance;
     }
 }

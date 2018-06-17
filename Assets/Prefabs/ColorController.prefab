@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fb51fcde81ed54993dfca7002cafb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Theme: 0
+  Theme: 3
   CurrentColorInput: 0
   AlphaDisabled: 0.3

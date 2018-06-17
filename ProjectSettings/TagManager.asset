@@ -18,6 +18,7 @@ TagManager:
   - Spike
   - paraLACHS
   - Textbox
+  - Door
   layers:
   - Default
   - TransparentFX
