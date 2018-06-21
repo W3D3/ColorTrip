@@ -36,9 +36,7 @@ public class Controller2D : RaycastController {
 		if (velocity.y < 0) {
 			DescendSlope(ref velocity);
 		}
-
-	    collisions.isCheckpoint = false;
-	    collisions.death = false;
+        
 	    collisions.zeroGravity = false;
 
 		HorizontalCollisions (ref velocity);
@@ -237,9 +235,6 @@ public class Controller2D : RaycastController {
 		public float slopeAngle, slopeAngleOld;
 		public Vector3 velocityOld;
 		public int faceDir;
-		public bool death;
-	    public bool isCheckpoint;
-	    public Vector3 checkpoint;
         public bool zeroGravity;
 
 		public void Reset() {

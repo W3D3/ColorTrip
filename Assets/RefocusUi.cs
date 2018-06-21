@@ -4,21 +4,24 @@ using UnityEngine.EventSystems;
 public class RefocusUi : MonoBehaviour
 {
 
-    private GameObject _lastSelectedGameObject;
+    public GameObject DefaultGameObject;
 
-    void Start()
+    void Awake()
     {
-        _lastSelectedGameObject = EventSystem.current.firstSelectedGameObject ?? new GameObject();
+        if (DefaultGameObject != null)
+        {
+            EventSystem.current.SetSelectedGameObject(DefaultGameObject);
+        }
     }
 
 	// Update is called once per frame
 	void Update () {
 	    if (EventSystem.current.currentSelectedGameObject == null)
 	    {
-            EventSystem.current.SetSelectedGameObject(_lastSelectedGameObject);
-	    } else if (_lastSelectedGameObject != null && _lastSelectedGameObject != EventSystem.current.currentSelectedGameObject)
+            EventSystem.current.SetSelectedGameObject(DefaultGameObject.gameObject);
+	    } else if (EventSystem.current.currentSelectedGameObject != DefaultGameObject)
 	    {
-	        _lastSelectedGameObject = EventSystem.current.currentSelectedGameObject;
+	        DefaultGameObject = EventSystem.current.currentSelectedGameObject;
 	    }
 	}
 }

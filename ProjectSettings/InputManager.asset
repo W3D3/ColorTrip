@@ -261,3 +261,19 @@ InputManager:
     type: 2
     axis: 3
     joyNum: 0
+  - serializedVersion: 3
+    m_Name: Jump
+    descriptiveName: Space, X Button xbox, b Switch
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: space
+    altNegativeButton: 
+    altPositiveButton: enter
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 3
+    joyNum: 0

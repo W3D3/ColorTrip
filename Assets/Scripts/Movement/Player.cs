@@ -16,9 +16,7 @@ namespace Assets.Scripts.Movement
         private int currentColor;
 
         public Vector2 wallLeap;
-
-        public Vector3 checkPoint;
-
+        
         public float wallSlideSpeedMax = 3;
         public float wallStickTime = .25f;
         float timeToWallUnstick;
@@ -40,7 +38,6 @@ namespace Assets.Scripts.Movement
         void Start() {
             controller = GetComponent<Controller2D> ();
             level = GetComponent<LevelInit>();
-            checkPoint = this.transform.position;
 
             gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
             jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -68,18 +65,7 @@ namespace Assets.Scripts.Movement
             }
 
             bool wallSliding = false;
-
-            if (controller.collisions.death)
-            {
-                //GameManager.instance.deathIsEternal();
-                //this.transform.position = checkPoint;
-                //this.velocity = Vector3.zero;
-                Respawn();
-                controller.collisions.death = false;
-                return;
-			
-            }
-		
+            
             if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && !controller.collisions.zeroGravity) {
                 wallSliding = true;
 
@@ -112,12 +98,7 @@ namespace Assets.Scripts.Movement
             {
                 canDash = true;
             }
-        
-            if (controller.collisions.isCheckpoint)
-            {
-                checkPoint = controller.collisions.checkpoint;
-            }
-
+       
             if (GamepadInput.Jump()) {
                 if (wallSliding) {
                     //GameManager.instance.playJumpSound();

@@ -122,4 +122,9 @@ public class GamepadInput : MonoBehaviour
                Input.GetAxis(Color1Button) > Tolerance &&
                Input.GetAxis(Color2Button) > Tolerance;
     }
+
+    public static bool Pause()
+    {
+        return Input.GetKeyDown(KeyCode.Escape); // todo gamepad "esc" button
+    }
 }
