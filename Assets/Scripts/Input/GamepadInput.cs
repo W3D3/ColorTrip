@@ -61,6 +61,7 @@ public class GamepadInput : MonoBehaviour
     private const string Color2Button = "Color2";
     private const string Horizontal = "Horizontal";
     private const string HorizontalSwitch = "HorizontalSwitch";
+    private const string PauseAxis = "Pause";
     private const double Tolerance = .1;
 
     private static readonly string[] SwitchGamepadNames = { "Wireless Gamepad", "Unknown Pro Controller" };
@@ -125,6 +126,6 @@ public class GamepadInput : MonoBehaviour
 
     public static bool Pause()
     {
-        return Input.GetKeyDown(KeyCode.Escape); // todo gamepad "esc" button
+        return Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7);
     }
 }

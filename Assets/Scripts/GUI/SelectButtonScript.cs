@@ -22,6 +22,7 @@ public class SelectButtonScript : MonoBehaviour, ISelectHandler, IDeselectHandle
 
     void OnEnable()
     {
+        OnDeselect(null);
         if (Selected)
         {
             OnSelect(null);
@@ -40,7 +41,10 @@ public class SelectButtonScript : MonoBehaviour, ISelectHandler, IDeselectHandle
     public void OnSelect(BaseEventData eventData)
     {
         TargetPosition = OriginalPosition + new Vector3(70, 0);
-        HintText.text = Hint;
+        if (HintText != null)
+        {
+            HintText.text = Hint;
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)
