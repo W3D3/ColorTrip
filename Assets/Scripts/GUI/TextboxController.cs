@@ -10,8 +10,17 @@ namespace Assets
         public float FadeDuration;
         public Text Text;
 
-
         public void Show(string text)
+        {
+            Text.text = text;
+            gameObject.SetActive(true);
+
+            var image = GetComponent<Image>();
+            image.canvasRenderer.SetAlpha(0f);
+            image.CrossFadeAlpha(Alpha, FadeDuration, true);
+        }
+
+        public void ShowAndHide(string text)
         {
             Text.text = text;
 
@@ -24,16 +33,16 @@ namespace Assets
             Invoke("TriggerFadeOut", Duration - FadeDuration);
         }
 
-        public void Hide()
+        public void HideTrigger()
         {
             gameObject.SetActive(false);
         }
 
-        private void TriggerFadeOut()
+        public void TriggerFadeOut()
         {
             var image = GetComponent<Image>();
             image.CrossFadeAlpha(0f, FadeDuration, true);
-            Invoke("Hide", FadeDuration);
+            Invoke("HideTrigger", FadeDuration);
         }
     }
 }

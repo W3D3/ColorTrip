@@ -6,8 +6,8 @@ public class GamepadInput : MonoBehaviour
 {
     private static GamepadInput _instance;
 
-    public static bool EnablePlayerControls = true;
-    public static bool EnableColorControls = true;
+    private static bool EnablePlayerControls = true;
+    private static bool EnableColorControls = true;
 
     private void Awake()
     {

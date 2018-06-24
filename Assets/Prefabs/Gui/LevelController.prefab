@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 114538601654344666}
   - component: {fileID: 114293554534399416}
   m_Layer: 0
-  m_Name: ColorController
-  m_TagString: Untagged
+  m_Name: LevelController
+  m_TagString: Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,20 +52,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70baf32daeecb246a727bb3f3635d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentTimePlayed: 0
   TimePlayed: 0
   StartTime: 0
-  DeathCount: 0
   Player: {fileID: 0}
   InPauseMenu: 0
-  InFinishedMenu: 0
   PauseMenu: {fileID: 0}
+  TextDeathCounterPause: {fileID: 0}
+  TextTimePlayedPause: {fileID: 0}
+  InFinishedMenu: 0
   FinishedMenu: {fileID: 0}
-  TextDeathCounterInPause: {fileID: 0}
-  TextTimePlayedInPause: {fileID: 0}
-  TextDeathCounterInFinished: {fileID: 0}
-  TextTimePlayedInFinished: {fileID: 0}
+  TextDeathCounterFinished: {fileID: 0}
+  TextTimePlayedFinished: {fileID: 0}
+  GameHud: {fileID: 0}
+  TextDeathCounterHud: {fileID: 0}
+  TextTimePlayedHud: {fileID: 0}
   NextLevelScene: 
-  MainMenuScene: testbed
+  MainMenuScene: 
 --- !u!114 &114538601654344666
 MonoBehaviour:
   m_ObjectHideFlags: 1

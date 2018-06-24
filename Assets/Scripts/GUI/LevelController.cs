@@ -8,21 +8,29 @@ namespace Assets.Scripts.GUI
     public class LevelController : MonoBehaviour
     {
 
+        public float CurrentTimePlayed;
         public float TimePlayed;
         public float StartTime;
 
         public Player Player;
-
-        // UI
-
+        
+        // pause screen
         public bool InPauseMenu;
-        public bool InFinishedMenu;
         public GameObject PauseMenu;
+        public Text TextDeathCounterPause;
+        public Text TextTimePlayedPause;
+
+        // finished screen
+        public bool InFinishedMenu;
         public GameObject FinishedMenu;
-        public Text TextDeathCounterInPause;
-        public Text TextTimePlayedInPause;
-        public Text TextDeathCounterInFinished;
-        public Text TextTimePlayedInFinished;
+        public Text TextDeathCounterFinished;
+        public Text TextTimePlayedFinished;
+
+        // game hud
+        public GameObject GameHud;
+        public Text TextDeathCounterHud;
+        public Text TextTimePlayedHud;
+
         public string NextLevelScene;
         public string MainMenuScene;
 
@@ -32,7 +40,10 @@ namespace Assets.Scripts.GUI
             InPauseMenu = false;
             InFinishedMenu = false;
             TimePlayed = 0;
+            CurrentTimePlayed = 0;
             StartTime = Time.time;
+
+            Cursor.visible = false;
         }
 	
         // Update is called once per frame
@@ -47,6 +58,10 @@ namespace Assets.Scripts.GUI
             {
                 ContinueGame();
             }
+
+            TextDeathCounterHud.text = Player.Deaths.ToString();
+            CurrentTimePlayed = Time.time - StartTime;
+            TextTimePlayedHud.text = GetPlayTimeFormatted(TimePlayed + CurrentTimePlayed);
         }
 
         public void StopTime()
@@ -66,8 +81,9 @@ namespace Assets.Scripts.GUI
             InFinishedMenu = true;
             InPauseMenu = false;
             StopTime();
-            TextDeathCounterInFinished.text = Player.Deaths.ToString();
-            TextTimePlayedInFinished.text = GetPlayTimeFormatted();
+            TextDeathCounterFinished.text = Player.Deaths.ToString();
+            TextTimePlayedFinished.text = GetPlayTimeFormatted(TimePlayed);
+            GameHud.SetActive(false);
             PauseMenu.SetActive(false);
             FinishedMenu.SetActive(true);
         }
@@ -77,8 +93,9 @@ namespace Assets.Scripts.GUI
             InPauseMenu = true;
             InFinishedMenu = false;
             StopTime();
-            TextDeathCounterInPause.text = Player.Deaths.ToString();
-            TextTimePlayedInPause.text = GetPlayTimeFormatted();
+            TextDeathCounterPause.text = Player.Deaths.ToString();
+            TextTimePlayedPause.text = GetPlayTimeFormatted(TimePlayed);
+            GameHud.SetActive(false);
             FinishedMenu.SetActive(false);
             PauseMenu.SetActive(true);
         }
@@ -88,12 +105,13 @@ namespace Assets.Scripts.GUI
             InPauseMenu = false;
             ResumeTime();
             PauseMenu.SetActive(false);
+            GameHud.SetActive(true);
         }
 
-        private string GetPlayTimeFormatted()
+        private string GetPlayTimeFormatted(float targetTime)
         {
-            var minutes = (int)(TimePlayed / 60);
-            var seconds = (TimePlayed % 60);
+            var minutes = (int)(targetTime / 60);
+            var seconds = (targetTime % 60);
             var hours = minutes / 60;
             minutes = minutes % 60;
 
@@ -126,18 +144,20 @@ namespace Assets.Scripts.GUI
                 return;
             }
 
-            SceneManager.LoadScene(NextLevelScene);
+            ResumeTime();
+            SceneManager.LoadScene(NextLevelScene, LoadSceneMode.Single);
         }
 
         public void RestartLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             ResumeTime();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
 
         public void GoToMainMenu()
         {
-            SceneManager.LoadScene(MainMenuScene);
+            ResumeTime();
+            SceneManager.LoadScene(MainMenuScene, LoadSceneMode.Single);
         }
     }
 }

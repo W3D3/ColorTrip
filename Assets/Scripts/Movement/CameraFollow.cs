@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
 
@@ -25,48 +24,63 @@ public class CameraFollow : MonoBehaviour {
     private GameObject _background;
     private GameObject _foreground;
 
-	void Start() {
-		focusArea = new FocusArea (target.collider.bounds, focusAreaSize);
-	    _horizon = ParaLachs.transform.GetChild(0).gameObject;
-	    _background = ParaLachs.transform.GetChild(1).gameObject;
-	    _foreground = ParaLachs.transform.GetChild(2).gameObject;
+	void Start()
+	{
+	    focusArea = new FocusArea(target.collider.bounds, focusAreaSize);
+
+        if (ParaLachs != null)
+	    {
+	        _horizon = ParaLachs.transform.GetChild(0).gameObject;
+	        _background = ParaLachs.transform.GetChild(1).gameObject;
+	        _foreground = ParaLachs.transform.GetChild(2).gameObject;
+	    }
 	}
 
-	void LateUpdate() {
-		focusArea.Update (target.collider.bounds);
+    void LateUpdate()
+    {
+        focusArea.Update(target.collider.bounds);
 
-		var focusPosition = focusArea.centre + Vector2.up * verticalOffset;
+        var focusPosition = focusArea.centre + Vector2.up * verticalOffset;
 
         // paraLACHS effect
-	    
-        var position = new Vector3(focusArea.velocity.x, 0, 0);
-	    _horizon.transform.position += position * 0.6f;
-        _background.transform.position += position * 0.3f;
-	    _foreground.transform.position -= position * 0.3f;
 
-		if (focusArea.velocity.x != 0) {
-			lookAheadDirX = Mathf.Sign (focusArea.velocity.x);
-			if (Mathf.Sign(target.playerInput.x) == Mathf.Sign(focusArea.velocity.x) && target.playerInput.x != 0) {
-				lookAheadStopped = false;
-				targetLookAheadX = lookAheadDirX * lookAheadDstX;
-			}
-			else {
-				if (!lookAheadStopped) {
-					lookAheadStopped = true;
-					targetLookAheadX = currentLookAheadX + (lookAheadDirX * lookAheadDstX - currentLookAheadX)/4f;
-				}
-			}
-		}
+        if (ParaLachs != null)
+        {
+            var position = new Vector3(focusArea.velocity.x, 0, 0);
+            _horizon.transform.position += position * 0.6f;
+            _background.transform.position += position * 0.3f;
+            _foreground.transform.position -= position * 0.3f;
+        }
+
+        if (focusArea.velocity.x != 0)
+        {
+            lookAheadDirX = Mathf.Sign(focusArea.velocity.x);
+            if (Mathf.Sign(target.playerInput.x) == Mathf.Sign(focusArea.velocity.x) && target.playerInput.x != 0)
+            {
+                lookAheadStopped = false;
+                targetLookAheadX = lookAheadDirX * lookAheadDstX;
+            }
+            else
+            {
+                if (!lookAheadStopped)
+                {
+                    lookAheadStopped = true;
+                    targetLookAheadX = currentLookAheadX + (lookAheadDirX * lookAheadDstX - currentLookAheadX) / 4f;
+                }
+            }
+        }
 
 
-		currentLookAheadX = Mathf.SmoothDamp (currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
+        currentLookAheadX =
+            Mathf.SmoothDamp(currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
 
-		focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
-		focusPosition += Vector2.right * currentLookAheadX;
-		transform.position = (Vector3)focusPosition + Vector3.forward * -10;
-	}
+        focusPosition.y =
+            Mathf.SmoothDamp(transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
+        focusPosition += Vector2.right * currentLookAheadX;
+        transform.position = (Vector3) focusPosition + Vector3.forward * -10;
+    }
 
-	void OnDrawGizmos() {
+    void OnDrawGizmos() {
 		Gizmos.color = new Color (1, 0, 0, .5f);
 		Gizmos.DrawCube (focusArea.centre, focusAreaSize);
 	}

@@ -103,9 +103,7 @@ MonoBehaviour:
   lookSmoothTimeX: 0.4
   verticalSmoothTime: 0.4
   focusAreaSize: {x: 5, y: 6}
-  Horizont: {fileID: 0}
-  Background: {fileID: 0}
-  Foreground: {fileID: 0}
+  ParaLachs: {fileID: 0}
 --- !u!124 &124559666492335176
 Behaviour:
   m_ObjectHideFlags: 1

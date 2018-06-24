@@ -19,6 +19,8 @@ TagManager:
   - paraLACHS
   - Textbox
   - Door
+  - Trigger
+  - Controller
   layers:
   - Default
   - TransparentFX

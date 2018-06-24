@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212035994175643362}
   - component: {fileID: 61913493373667376}
   m_Layer: 8
-  m_Name: anticolorMixed
-  m_TagString: AntiColorMixed
+  m_Name: anticolor2
+  m_TagString: AntiColor2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1190878075262012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.84881, y: 3.4528453, z: 0}
+  m_LocalPosition: {x: -49.224453, y: -2.1107864, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,6 +79,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -101,7 +102,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d3387b579822e41a52c49cb5927448, type: 3}
-  m_Color: {r: 0.5137255, g: 0, b: 0.8392157, a: 1}
+  m_Color: {r: 0.034482956, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2

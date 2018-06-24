@@ -59,7 +59,7 @@ namespace Assets.Scripts.Interaction
         {
             if (Textbox == null) return;
 
-            Textbox.Show("CHECKPOINT");
+            Textbox.ShowAndHide("CHECKPOINT");
         }
     }
 }
