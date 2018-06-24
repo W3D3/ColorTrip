@@ -443,6 +443,7 @@ MonoBehaviour:
   InitialPosition: {x: 0, y: 0, z: 0}
   InputEnabled: 0
   ZeroGravity: 0
+  Deaths: 0
 --- !u!61 &115250694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1940,10 +1941,6 @@ Prefab:
       propertyPath: CreditsMenu
       value: 
       objectReference: {fileID: 195868259}
-    - target: {fileID: 1579989998566774, guid: 56e1a91bdf8657a488f10a03c54b6163, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56e1a91bdf8657a488f10a03c54b6163, type: 2}
   m_IsPrefabParent: 0

@@ -19,7 +19,8 @@ public class GamepadInput : MonoBehaviour
     // ReSharper disable once Unity.RedundantEventFunction
     void Start()
     {
-
+        EnableColorControls = true;
+        EnablePlayerControls = true;
     }
 
     // Update is called once per frame
