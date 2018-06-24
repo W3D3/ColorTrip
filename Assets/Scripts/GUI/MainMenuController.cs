@@ -6,6 +6,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject MainMenu;
     public GameObject TutorialMenu;
     public GameObject LevelMenu;
+    public GameObject CreditsMenu;
     
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,7 @@ public class MainMenuController : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        CreditsMenu.SetActive(false);
         TutorialMenu.SetActive(false);
         LevelMenu.SetActive(false);
         MainMenu.SetActive(true);
@@ -40,6 +42,12 @@ public class MainMenuController : MonoBehaviour
     {
         MainMenu.SetActive(false);
         LevelMenu.SetActive(true);
+    }
+
+    public void GoToCreditsMenu()
+    {
+        MainMenu.SetActive(false);
+        CreditsMenu.SetActive(true);
     }
 
     public void ExitGame()

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Interaction;
+﻿using System;
+using Assets.Scripts.Interaction;
 using UnityEngine;
 
 namespace Assets.Scripts.Movement
@@ -34,6 +35,7 @@ namespace Assets.Scripts.Movement
         public CheckpointController LastCheckpoint;
         public Vector3 InitialPosition;
         public bool InputEnabled;
+        public bool ZeroGravity;
 
         void Start() {
             controller = GetComponent<Controller2D> ();
@@ -45,6 +47,7 @@ namespace Assets.Scripts.Movement
             canDash = true;
 
             InitialPosition = transform.position;
+            ZeroGravity = false;
         }
 
         void Update() {
@@ -52,11 +55,11 @@ namespace Assets.Scripts.Movement
             int wallDirX = (controller.collisions.left) ? -1 : 1;
 
             float targetVelocityX = input.x * moveSpeed;
-            if (controller.collisions.zeroGravity)
+            if (ZeroGravity)
             {
                 if (Mathf.Abs(velocity.x) < 0.0001f)
                 {
-                    velocity.x = 1 * Mathf.Sign(velocity.x) == 0f ? 1 : Mathf.Sign(velocity.x);
+                    velocity.x = Mathf.Abs(1 * Mathf.Sign(velocity.x)) < 0.0001f ? 1 : Mathf.Sign(velocity.x);
                 }
             }
             else
@@ -66,7 +69,7 @@ namespace Assets.Scripts.Movement
 
             bool wallSliding = false;
             
-            if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && !controller.collisions.zeroGravity) {
+            if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && !ZeroGravity) {
                 wallSliding = true;
 
                 if (velocity.y < -wallSlideSpeedMax) {
@@ -90,7 +93,8 @@ namespace Assets.Scripts.Movement
 
             }
 
-            if ((controller.collisions.above || controller.collisions.below) && !controller.collisions.zeroGravity) {
+            // todo check zero gravity
+            if ((controller.collisions.above || controller.collisions.below) /*&& !controller.collisions.zeroGravity*/) {
                 velocity.y = 0;
             }
 
@@ -101,15 +105,8 @@ namespace Assets.Scripts.Movement
        
             if (GamepadInput.Jump()) {
                 if (wallSliding) {
-                    //GameManager.instance.playJumpSound();
-                    /*if (wallDirX == input.x || input.x == 0) {
-					velocity.x = -wallDirX * wallJumpOff.x;
-					velocity.y = wallJumpOff.y;
-				}
-				else {*/
                     velocity.x = -wallDirX * wallLeap.x;
                     velocity.y = wallLeap.y;
-                    //}
                 }
                 if (controller.collisions.below) {
                     //GameManager.instance.playJumpSound();
@@ -127,7 +124,7 @@ namespace Assets.Scripts.Movement
                 canDash = false;
             }
         
-            if (!controller.collisions.zeroGravity)
+            if (!ZeroGravity)
             {
                 velocity.y += gravity * Time.deltaTime;
             }

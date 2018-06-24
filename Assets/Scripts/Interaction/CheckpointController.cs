@@ -15,7 +15,6 @@ namespace Assets.Scripts.Interaction
 
         private void Start()
         {
-            ColorActivated = ColorFactory.LimeGreen;
             ColorSet = false;
         }
 

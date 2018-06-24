@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4472720688170522}
   - component: {fileID: 212993596367584582}
   - component: {fileID: 61978876671306622}
+  - component: {fileID: 114738682606634818}
   m_Layer: 10
   m_Name: Door
   m_TagString: Door
@@ -168,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763858706043564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.56, y: -3.87, z: 0}
+  m_LocalPosition: {x: -6, y: 5.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4488934774403892}
@@ -257,6 +258,18 @@ MonoBehaviour:
   Left: 0
   OriginalPosition: {x: 0, y: 0, z: 0}
   Target: {fileID: 1485636700126046}
+--- !u!114 &114738682606634818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523668590996548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55163f73da948e448b8c8348da00fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelFinishedPanel: {fileID: 0}
 --- !u!114 &114993754661325324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,7 +456,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: d674dc32ccc8f1443972a47b97a3f6bd, type: 3}
-  m_Color: {r: 0.75591934, g: 1, b: 0.6933962, a: 1}
+  m_Color: {r: 0.25490198, g: 0.4117647, b: 0.88235295, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1

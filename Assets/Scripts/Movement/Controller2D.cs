@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class Controller2D : RaycastController {
 	
@@ -10,8 +8,6 @@ public class Controller2D : RaycastController {
 	public Vector2 playerInput;
 	
 	public CollisionInfo collisions;
-
-	public string levelStringAdvance;
 
 
 	public override void Start() {
@@ -36,8 +32,6 @@ public class Controller2D : RaycastController {
 		if (velocity.y < 0) {
 			DescendSlope(ref velocity);
 		}
-        
-	    collisions.zeroGravity = false;
 
 		HorizontalCollisions (ref velocity);
 		if (velocity.y != 0) {
@@ -67,13 +61,6 @@ public class Controller2D : RaycastController {
 			Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength,Color.red);
 
 			if (hit) {
-				if(checkForGoal(hit)) return;
-			    if (checkForZeroGravity(hit))
-			    {
-			        //collisions.left = directionX == -1;
-			        //collisions.right = directionX == 1;
-                    continue;
-                };
 
                 if (hit.distance == 0) {
 					continue;
@@ -123,17 +110,8 @@ public class Controller2D : RaycastController {
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength,Color.red);
 
 			if (hit) {
-				if(checkForGoal(hit)) return;
 
-			    if (checkForZeroGravity(hit))
-			    {
-			        //collisions.below = directionY == -1;
-			        //collisions.above = directionY == 1;
-                    continue;
-                }
-			    
-			 
-				velocity.y = (hit.distance - skinWidth) * directionY;
+			    velocity.y = (hit.distance - skinWidth) * directionY;
 				rayLength = hit.distance;
 
 				if (collisions.climbingSlope) {
@@ -198,34 +176,7 @@ public class Controller2D : RaycastController {
 			}
 		}
 	}
-
-	public bool isAirborne()
-	{
-		return !collisions.above && !collisions.below && !collisions.left && !collisions.right;
-	}
     
-	private bool checkForGoal(RaycastHit2D hit)
-	{
-		if (hit.collider.tag == "Goal")
-		{
-			StatsManager.Instance.PushLevel();
-			GameManager.instance.advanceLevel(levelStringAdvance);
-			Destroy(this.gameObject);
-		}
-
-		return hit.collider.tag == "Goal";
-	}
-
-    private bool checkForZeroGravity(RaycastHit2D hit)
-    {
-        if (hit.collider.tag == "ZeroGravity")
-        {
-            collisions.zeroGravity = true;
-        }
-        return hit.collider.tag == "ZeroGravity";
-    }
-
-
     public struct CollisionInfo {
 		public bool above, below;
 		public bool left, right;
@@ -235,7 +186,6 @@ public class Controller2D : RaycastController {
 		public float slopeAngle, slopeAngleOld;
 		public Vector3 velocityOld;
 		public int faceDir;
-        public bool zeroGravity;
 
 		public void Reset() {
 			above = below = false;
