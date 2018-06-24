@@ -19,33 +19,38 @@ public class Controller2D : RaycastController {
 		Move (velocity, Vector2.zero, standingOnPlatform);
 	}
 
-	public void Move(Vector3 velocity, Vector2 input, bool standingOnPlatform = false) {
-		UpdateRaycastOrigins ();
-		collisions.Reset ();
-		collisions.velocityOld = velocity;
-		playerInput = input;
+    public void Move(Vector3 velocity, Vector2 input, bool standingOnPlatform = false)
+    {
+        UpdateRaycastOrigins();
+        collisions.Reset();
+        collisions.velocityOld = velocity;
+        playerInput = input;
 
-		if (velocity.x != 0) {
-			collisions.faceDir = (int)Mathf.Sign(velocity.x);
-		}
+        if (velocity.x != 0)
+        {
+            collisions.faceDir = (int) Mathf.Sign(velocity.x);
+        }
 
-		if (velocity.y < 0) {
-			DescendSlope(ref velocity);
-		}
+        if (velocity.y < 0)
+        {
+            DescendSlope(ref velocity);
+        }
 
-		HorizontalCollisions (ref velocity);
-		if (velocity.y != 0) {
-			VerticalCollisions (ref velocity);
-		}
+        HorizontalCollisions(ref velocity);
+        if (velocity.y != 0)
+        {
+            VerticalCollisions(ref velocity);
+        }
 
-		transform.Translate (velocity);
+        transform.Translate(velocity);
 
-		if (standingOnPlatform) {
-			collisions.below = true;
-		}
-	}
+        if (standingOnPlatform)
+        {
+            collisions.below = true;
+        }
+    }
 
-	void HorizontalCollisions(ref Vector3 velocity) {
+    void HorizontalCollisions(ref Vector3 velocity) {
 		float directionX = collisions.faceDir;
 		float rayLength = Mathf.Abs (velocity.x) + skinWidth;
 

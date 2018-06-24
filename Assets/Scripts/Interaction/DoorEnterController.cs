@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.Movement;
+﻿using Assets.Scripts.GUI;
 using UnityEngine;
 
 namespace Assets.Scripts.Interaction
 {
     public class DoorEnterController : MonoBehaviour
     {
-        public GameObject LevelFinishedPanel;
+        public LevelController LevelController;
 
         // Use this for initialization
         void Start () {
@@ -21,9 +21,7 @@ namespace Assets.Scripts.Interaction
         {
             if (c.tag != "Player") return;
             
-            LevelFinishedPanel.SetActive(true);
-            GamepadInput.EnablePlayerControls = false;
-            GamepadInput.EnableColorControls = false;
+            LevelController.OpenFinishedMenu();
         }
     }
 }

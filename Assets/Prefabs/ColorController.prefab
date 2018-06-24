@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4268868147356766}
   - component: {fileID: 114538601654344666}
+  - component: {fileID: 114293554534399416}
   m_Layer: 0
   m_Name: ColorController
   m_TagString: Untagged
@@ -40,6 +41,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114293554534399416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693681455400178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70baf32daeecb246a727bb3f3635d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimePlayed: 0
+  StartTime: 0
+  DeathCount: 0
+  Player: {fileID: 0}
+  InPauseMenu: 0
+  InFinishedMenu: 0
+  PauseMenu: {fileID: 0}
+  FinishedMenu: {fileID: 0}
+  TextDeathCounterInPause: {fileID: 0}
+  TextTimePlayedInPause: {fileID: 0}
+  TextDeathCounterInFinished: {fileID: 0}
+  TextTimePlayedInFinished: {fileID: 0}
+  NextLevelScene: 
+  MainMenuScene: testbed
 --- !u!114 &114538601654344666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,6 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fb51fcde81ed54993dfca7002cafb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Theme: 3
+  Theme: 0
   CurrentColorInput: 0
   AlphaDisabled: 0.3

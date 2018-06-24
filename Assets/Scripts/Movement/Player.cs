@@ -36,6 +36,7 @@ namespace Assets.Scripts.Movement
         public Vector3 InitialPosition;
         public bool InputEnabled;
         public bool ZeroGravity;
+        public int Deaths;
 
         void Start() {
             controller = GetComponent<Controller2D> ();
@@ -48,6 +49,7 @@ namespace Assets.Scripts.Movement
 
             InitialPosition = transform.position;
             ZeroGravity = false;
+            Deaths = 0;
         }
 
         void Update() {
@@ -145,7 +147,7 @@ namespace Assets.Scripts.Movement
 
         public void Kill()
         {
-            // todo respawn for now -> trigger gui interaction
+            Deaths++;
             Respawn();
         }
 
