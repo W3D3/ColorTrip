@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Movement;
+using Assets.Scripts.Scoring;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,6 +26,7 @@ namespace Assets.Scripts.GUI
         public GameObject FinishedMenu;
         public Text TextDeathCounterFinished;
         public Text TextTimePlayedFinished;
+        public Text TextStats;
 
         // game hud
         public GameObject GameHud;
@@ -86,6 +88,8 @@ namespace Assets.Scripts.GUI
             GameHud.SetActive(false);
             PauseMenu.SetActive(false);
             FinishedMenu.SetActive(true);
+
+            UpdateScore();
         }
 
         public void OpenPauseMenu()
@@ -108,7 +112,7 @@ namespace Assets.Scripts.GUI
             GameHud.SetActive(true);
         }
 
-        private string GetPlayTimeFormatted(float targetTime)
+        public static string GetPlayTimeFormatted(float targetTime)
         {
             var minutes = (int)(targetTime / 60);
             var seconds = (targetTime % 60);
@@ -158,6 +162,16 @@ namespace Assets.Scripts.GUI
         {
             ResumeTime();
             SceneManager.LoadScene(MainMenuScene, LoadSceneMode.Single);
+        }
+
+        public void UpdateScore()
+        {
+            var deaths = Player.Deaths;
+            var levelName = SceneManager.GetActiveScene().name;
+
+            var newHighscore = ScoreController.UpdateScore(levelName, deaths, TimePlayed);
+
+            TextStats.text = newHighscore ? "NEW HIGHSCORE" : "SCORE";
         }
     }
 }

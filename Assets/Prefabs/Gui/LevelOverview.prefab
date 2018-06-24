@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1355396403032988
 GameObject:
   m_ObjectHideFlags: 1
@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level9
   Hint: 'Difficulty: HARD'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -664,6 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level10
   Hint: 'Difficulty: DEVASTATING'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -681,6 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level7
   Hint: 'Difficulty: HARD'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -698,6 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level4
   Hint: 'Difficulty: INTERMEDIATE'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -833,6 +837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level2
   Hint: 'Difficulty: EASY'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -883,6 +888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level5
   Hint: 'Difficulty: INTERMEDIATE'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -927,7 +933,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114815340438296462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StartLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: level1
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114294271775379868
@@ -974,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level6
   Hint: 'Difficulty: INTERMEDIATE'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -1273,6 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level8
   Hint: 'Difficulty: HARD'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -1344,6 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level3
   Hint: 'Difficulty: EASY'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}
@@ -1870,6 +1890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ccafc1037db943a69f5de81ac03ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelName: level1
   Hint: 'Difficulty: EASY'
   HintText: {fileID: 114896203156007084}
   OriginalScale: {x: 0, y: 0, z: 0}

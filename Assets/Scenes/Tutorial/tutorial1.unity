@@ -1461,8 +1461,13 @@ Prefab:
     - target: {fileID: 114293554534399416, guid: 055ef05932fd9ab40bbcc20d9059dce4,
         type: 2}
       propertyPath: NextLevelScene
-      value: tutorial2
+      value: mainmenu
       objectReference: {fileID: 0}
+    - target: {fileID: 114293554534399416, guid: 055ef05932fd9ab40bbcc20d9059dce4,
+        type: 2}
+      propertyPath: TextStats
+      value: 
+      objectReference: {fileID: 1758171588}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 055ef05932fd9ab40bbcc20d9059dce4, type: 2}
   m_IsPrefabParent: 0
@@ -2842,6 +2847,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1357746836616016, guid: d1e467cd3dfc8524cabe27dc4ed85ac8,
     type: 2}
   m_PrefabInternal: {fileID: 1758171583}
+--- !u!114 &1758171588 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114317319310442960, guid: d1e467cd3dfc8524cabe27dc4ed85ac8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1758171583}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1765406427
 Prefab:
   m_ObjectHideFlags: 0
