@@ -42,6 +42,7 @@ public class ColorController : MonoBehaviour
         Colorize(_antiColorMixedBlocks, LevelColors.ColorMixed);
 
         Colorize(GameObject.FindGameObjectsWithTag("Trigger"), ColorFactory.Transparent);
+        Colorize(GameObject.FindGameObjectsWithTag("ZeroGravity"), ColorFactory.Gray);
 
         UpdateColors(ColorInput.None);
     }

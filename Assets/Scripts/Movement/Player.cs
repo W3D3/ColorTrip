@@ -57,17 +57,21 @@ namespace Assets.Scripts.Movement
             int wallDirX = (controller.collisions.left) ? -1 : 1;
 
             float targetVelocityX = input.x * moveSpeed;
-            if (ZeroGravity)
+            //if (ZeroGravity)
+            //{
+            //    if (Mathf.Abs(velocity.x) < 0.0001f)
+            //    {
+            //        velocity.x = Mathf.Abs(1 * Mathf.Sign(velocity.x)) < 0.0001f ? 1 : Mathf.Sign(velocity.x);
+            //    }
+            //}
+            //else
+            //{
+            if (!ZeroGravity)
             {
-                if (Mathf.Abs(velocity.x) < 0.0001f)
-                {
-                    velocity.x = Mathf.Abs(1 * Mathf.Sign(velocity.x)) < 0.0001f ? 1 : Mathf.Sign(velocity.x);
-                }
+                velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
+                    (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
             }
-            else
-            {
-                velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-            }
+            //}
 
             bool wallSliding = false;
             
@@ -94,9 +98,8 @@ namespace Assets.Scripts.Movement
                 }
 
             }
-
-            // todo check zero gravity
-            if ((controller.collisions.above || controller.collisions.below) /*&& !controller.collisions.zeroGravity*/) {
+            
+            if ((controller.collisions.above || controller.collisions.below) && !ZeroGravity) {
                 velocity.y = 0;
             }
 
@@ -125,7 +128,8 @@ namespace Assets.Scripts.Movement
                 velocity.y = 7; //very importante
                 canDash = false;
             }
-        
+
+
             if (!ZeroGravity)
             {
                 velocity.y += gravity * Time.deltaTime;

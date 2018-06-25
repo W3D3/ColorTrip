@@ -37,11 +37,12 @@ public class Controller2D : RaycastController {
         }
 
         HorizontalCollisions(ref velocity);
+
         if (velocity.y != 0)
         {
             VerticalCollisions(ref velocity);
         }
-
+        
         transform.Translate(velocity);
 
         if (standingOnPlatform)
@@ -117,7 +118,8 @@ public class Controller2D : RaycastController {
 			if (hit) {
 
 			    velocity.y = (hit.distance - skinWidth) * directionY;
-				rayLength = hit.distance;
+			     
+			    rayLength = hit.distance;
 
 				if (collisions.climbingSlope) {
 					velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
@@ -145,7 +147,7 @@ public class Controller2D : RaycastController {
 		}
 	}
 
-	void ClimbSlope(ref Vector3 velocity, float slopeAngle) {
+    void ClimbSlope(ref Vector3 velocity, float slopeAngle) {
 		float moveDistance = Mathf.Abs (velocity.x);
 		float climbVelocityY = Mathf.Sin (slopeAngle * Mathf.Deg2Rad) * moveDistance;
 

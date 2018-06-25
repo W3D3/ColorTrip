@@ -1965,7 +1965,7 @@ Prefab:
     - target: {fileID: 114293554534399416, guid: 055ef05932fd9ab40bbcc20d9059dce4,
         type: 2}
       propertyPath: NextLevelScene
-      value: mainmenu
+      value: level2
       objectReference: {fileID: 0}
     - target: {fileID: 114293554534399416, guid: 055ef05932fd9ab40bbcc20d9059dce4,
         type: 2}
